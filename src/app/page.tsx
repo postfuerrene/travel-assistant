@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import NavBar from "@/components/NavBar";
+import BottomTabBar from "@/components/BottomTabBar";
 import BudgetSection from "@/components/BudgetSection";
 import CitySection from "@/components/CitySection";
 import Divider from "@/components/Divider";
@@ -13,7 +14,7 @@ export default function Home() {
       <Hero />
       <NavBar />
       <BudgetSection />
-      <main className="mx-auto w-full max-w-[860px] px-6 pb-16">
+      <main className="mx-auto w-full max-w-[860px] px-5 pb-8 sm:px-8">
         {trip.cities.map((city, i) => (
           <div key={city.id}>
             <CitySection city={city} />
@@ -30,6 +31,8 @@ export default function Home() {
         <TipsSection />
       </main>
       <Footer />
+      <div className="h-16 md:hidden" aria-hidden="true" />
+      <BottomTabBar />
     </div>
   );
 }

@@ -43,7 +43,6 @@ export type City = {
 
 export type BudgetRow = { label: string; value: string };
 export type BudgetCard = {
-  icon: string;
   label: string;
   rows: BudgetRow[];
   subtotalLabel: string;
@@ -52,7 +51,7 @@ export type BudgetCard = {
   accent: "rust" | "gold" | "sage" | "muted";
 };
 
-export type Tip = { icon: string; title: string; text: string };
+export type Tip = { title: string; text: string };
 
 export const trip = {
   title: { normal: "Brünn · ", em: "Wien", rest: " · Pardubitz" },
@@ -70,7 +69,6 @@ export const trip = {
   budget: {
     cards: [
       {
-        icon: "🏨",
         label: "Hotels (inkl. Frühstück)",
         rows: [
           { label: "Hotel Botanica, Brünn (2 Nächte)", value: "€ 284,95" },
@@ -82,11 +80,10 @@ export const trip = {
         ],
         subtotalLabel: "Zwischensumme",
         subtotalValue: "€ 1.499,95",
-        note: "✅ Alle Hotels bestätigt",
+        note: "Alle Hotels bestätigt",
         accent: "rust",
       },
       {
-        icon: "🍽",
         label: "Verpflegung (Mittag + Abend, 3 Personen)",
         rows: [
           { label: "Tschechien ~4 Tage (günstig)", value: "~€ 200" },
@@ -98,7 +95,6 @@ export const trip = {
         accent: "gold",
       },
       {
-        icon: "🎟",
         label: "Eintritte (3 Personen)",
         rows: [
           { label: "Burg Špilberk + Ossuar", value: "~€ 51" },
@@ -115,8 +111,7 @@ export const trip = {
         accent: "sage",
       },
       {
-        icon: "🚋",
-        label: "ÖPNV Wien & 🚗 Benzin",
+        label: "ÖPNV Wien & Benzin",
         rows: [
           { label: "Wien City Card 5 Tage × 3 Pers.", value: "~€ 255" },
           {
@@ -137,32 +132,26 @@ export const trip = {
   },
   tips: [
     {
-      icon: "💶",
       title: "Währung",
       text: "In Tschechien gilt die Krone (CZK), nicht der Euro. Bargeld wechseln empfohlen — besser als Wechselstuben an Touristenorten.",
     },
     {
-      icon: "🎟️",
       title: "Tickets vorbuchen",
       text: "Schönbrunn, Hofburg und Belvedere unbedingt online im Voraus buchen. Im Sommer sonst sehr lange Warteschlangen.",
     },
     {
-      icon: "🚋",
       title: "Wien City Card",
       text: "Ab ~17 €/Tag: Unlimitierte Öffi-Nutzung (U-Bahn, Tram, Bus) plus Rabatte auf viele Attraktionen — lohnt sich für 5 Tage.",
     },
     {
-      icon: "💡",
       title: "Ossuar Brünn",
       text: "Für Kinder ab ca. 10 Jahren geeignet. Mo & Do geschlossen. Tickets besser vorab online reservieren.",
     },
     {
-      icon: "🏰",
       title: "Schloss Pardubice",
       text: "Montags geschlossen! Interaktive Kinderausstellung und Aussichtsturm besonders empfehlenswert.",
     },
     {
-      icon: "🌞",
       title: "Sommer-Tipp",
       text: "Früh starten vermeidet Hitze und Menschenmassen. Wasserflaschen immer dabei — Trinkbrunnen gibt es in Wien überall.",
     },

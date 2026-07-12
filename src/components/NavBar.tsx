@@ -8,12 +8,12 @@ export default function NavBar() {
   ];
 
   return (
-    <nav className="sticky top-0 z-20 flex flex-wrap justify-center gap-1 border-b border-border bg-cream/95 px-4 py-2 backdrop-blur">
+    <nav className="sticky top-0 z-20 hidden justify-center gap-1 border-b border-line bg-cream/95 px-4 py-2.5 backdrop-blur md:flex">
       {links.map((l) => (
         <a
           key={l.href}
           href={l.href}
-          className="rounded-sm px-3 py-1 text-[0.72rem] tracking-[0.1em] text-muted uppercase transition-colors hover:bg-ink hover:text-cream"
+          className="rounded-full px-4 py-1.5 text-sm font-medium text-ink-soft transition-colors hover:bg-navy hover:text-white"
         >
           {l.label}
         </a>

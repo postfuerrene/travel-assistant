@@ -1,26 +1,34 @@
+import { Bus, Euro, Info, Landmark, Sun, Ticket } from "lucide-react";
 import { trip } from "@/data/trip";
+
+const TIP_ICONS = [Euro, Ticket, Bus, Info, Landmark, Sun];
 
 export default function TipsSection() {
   return (
     <div
       id="tipps"
-      className="mt-12 scroll-mt-16 bg-ink px-7 py-8 text-cream"
+      className="mt-6 scroll-mt-16 rounded-3xl bg-navy px-5 py-7 text-white sm:px-7"
     >
-      <h3 className="mb-5 font-serif text-xl tracking-wide text-gold">
-        ✦ Praktische Reisetipps
+      <h3 className="mb-5 text-lg font-bold text-gold">
+        Praktische Reisetipps
       </h3>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {trip.tips.map((tip) => (
-          <div key={tip.title} className="border border-cream/15 p-3">
-            <div className="mb-1 text-xl">{tip.icon}</div>
-            <strong className="mb-1 block text-[0.75rem] tracking-[0.1em] text-gold uppercase">
-              {tip.title}
-            </strong>
-            <p className="text-[0.82rem] leading-relaxed text-cream/75">
-              {tip.text}
-            </p>
-          </div>
-        ))}
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {trip.tips.map((tip, i) => {
+          const Icon = TIP_ICONS[i];
+          return (
+            <div key={tip.title} className="rounded-2xl bg-white/5 p-4">
+              <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-br from-orange to-gold">
+                <Icon className="h-4 w-4 text-navy" strokeWidth={2.5} />
+              </span>
+              <strong className="mb-1 block text-xs font-semibold tracking-wide text-gold uppercase">
+                {tip.title}
+              </strong>
+              <p className="text-sm leading-relaxed text-white/70">
+                {tip.text}
+              </p>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

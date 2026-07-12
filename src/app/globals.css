@@ -1,33 +1,48 @@
 @import "tailwindcss";
 
 :root {
-  --cream: #f5f0e8;
-  --ink: #1a1612;
-  --rust: #b5451b;
-  --gold: #c8943a;
-  --sage: #5a7a5e;
-  --muted: #7a6e62;
-  --border: #d9d0c0;
+  --navy: #10193a;
+  --navy-light: #1c2c5c;
+  --blue: #4a7ff8;
+  --blue-soft: #e4ecff;
+  --orange: #ff7648;
+  --gold: #ffc757;
+  --cream: #f0efeb;
+  --white: #ffffff;
+  --ink: #202020;
+  --ink-soft: #6b6a66;
+  --line: #e4e1d8;
 }
 
 @theme inline {
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-orange: var(--orange);
+  --color-gold: var(--gold);
   --color-cream: var(--cream);
   --color-ink: var(--ink);
-  --color-rust: var(--rust);
-  --color-gold: var(--gold);
-  --color-sage: var(--sage);
-  --color-muted: var(--muted);
-  --color-border: var(--border);
-  --font-serif: var(--font-playfair);
-  --font-sans: var(--font-dm-sans);
+  --color-ink-soft: var(--ink-soft);
+  --color-line: var(--line);
+  --font-sans: var(--font-jakarta);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background: var(--cream);
   color: var(--ink);
-  font-family: var(--font-dm-sans), sans-serif;
-  font-weight: 300;
-  line-height: 1.65;
+  font-family: var(--font-jakarta), sans-serif;
+  font-weight: 400;
+  line-height: 1.55;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  touch-action: manipulation;
 }
 
 @keyframes fadeUp {
@@ -43,4 +58,18 @@ body {
 
 .animate-fade-up {
   animation: fadeUp 0.4s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up {
+    animation: none;
+  }
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 0px);
 }

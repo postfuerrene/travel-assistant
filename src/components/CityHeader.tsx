@@ -1,35 +1,45 @@
+import { BedDouble, Car } from "lucide-react";
 import type { City } from "@/data/trip";
 
 export default function CityHeader({ city }: { city: City }) {
   return (
-    <div className="mb-6 flex flex-wrap items-end gap-4 border-b-2 border-ink pb-3">
-      <div className="font-serif text-5xl leading-none font-bold text-border">
-        {city.number}
-      </div>
-      <div className="min-w-[200px] flex-1">
-        <h2 className="font-serif text-2xl">
-          {city.name}{" "}
-          {city.nativeName && (
-            <em className="text-base text-muted italic">
-              ({city.nativeName})
-            </em>
-          )}
-          <span className="ml-2 inline-block rounded-sm bg-rust px-2 py-0.5 align-middle text-[0.65rem] tracking-[0.15em] text-cream uppercase">
-            {city.nights} Nächte
+    <div className="mb-5 overflow-hidden rounded-3xl bg-linear-to-br from-navy to-navy-light text-white">
+      <div className="relative px-5 py-6 sm:px-7 sm:py-7">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_100%_0%,rgba(255,118,72,0.25)_0%,transparent_55%)]" />
+        <div className="relative flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div className="mb-1 text-xs font-semibold tracking-wide text-white/50 uppercase">
+              {city.region}
+            </div>
+            <h2 className="text-2xl font-extrabold sm:text-3xl">
+              {city.name}{" "}
+              {city.nativeName && (
+                <span className="text-lg font-medium text-white/50">
+                  ({city.nativeName})
+                </span>
+              )}
+            </h2>
+            <div className="mt-3 flex flex-wrap gap-2">
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">
+                {city.nights} Nächte
+              </span>
+              <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">
+                <Car className="h-3.5 w-3.5" strokeWidth={2.5} />
+                {city.driveFrom.time} ab {city.driveFrom.from}
+              </span>
+            </div>
+          </div>
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-orange to-gold text-sm font-extrabold text-navy">
+            {city.number}
           </span>
-        </h2>
-        <div className="mt-1 text-[0.78rem] text-muted">{city.region}</div>
-        <div className="mt-1 text-[0.78rem] text-sage">
-          🏨 {city.hotel.name} · {city.hotel.price}
-          {city.hotel.confirmed ? " · ✅ Bestätigt" : ""} (
-          {city.hotel.dateRange})
         </div>
       </div>
-      <div className="pb-1 text-right text-[0.75rem] whitespace-nowrap text-muted">
-        <span className="block text-base font-medium text-gold">
-          {city.driveFrom.time}
+      <div className="flex items-center gap-2.5 border-t border-white/10 bg-white/5 px-5 py-3 sm:px-7">
+        <BedDouble className="h-4 w-4 shrink-0 text-gold" strokeWidth={2} />
+        <span className="text-sm text-white/85">
+          {city.hotel.name} · {city.hotel.price}
+          {city.hotel.confirmed ? " · Bestätigt" : ""} ({city.hotel.dateRange})
         </span>
-        ab {city.driveFrom.from}
       </div>
     </div>
   );

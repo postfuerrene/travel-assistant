@@ -1,6 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  Cloud,
+  CloudDrizzle,
+  CloudFog,
+  CloudLightning,
+  CloudRain,
+  CloudSnow,
+  CloudSun,
+  Droplets,
+  Sun,
+  type LucideIcon,
+} from "lucide-react";
 import type { Coord } from "@/data/trip";
 
 type WeatherState =
@@ -18,29 +30,17 @@ type WeatherState =
       }[];
     };
 
-const WMO_ICON: Record<number, string> = {
-  0: "☀️",
-  1: "🌤️",
-  2: "⛅",
-  3: "☁️",
-  45: "🌫️",
-  48: "🌫️",
-  51: "🌦️",
-  53: "🌦️",
-  55: "🌦️",
-  61: "🌧️",
-  63: "🌧️",
-  65: "🌧️",
-  71: "🌨️",
-  73: "🌨️",
-  75: "🌨️",
-  80: "🌦️",
-  81: "🌧️",
-  82: "⛈️",
-  95: "⛈️",
-  96: "⛈️",
-  99: "⛈️",
-};
+function weatherIcon(code: number): LucideIcon {
+  if (code === 0) return Sun;
+  if (code === 1 || code === 2) return CloudSun;
+  if (code === 3) return Cloud;
+  if (code === 45 || code === 48) return CloudFog;
+  if ([51, 53, 55].includes(code)) return CloudDrizzle;
+  if ([61, 63, 65, 80, 81].includes(code)) return CloudRain;
+  if ([71, 73, 75].includes(code)) return CloudSnow;
+  if ([82, 95, 96, 99].includes(code)) return CloudLightning;
+  return Cloud;
+}
 
 export default function WeatherWidget({
   coord,
@@ -85,49 +85,51 @@ export default function WeatherWidget({
   }, [coord.lat, coord.lon, startDate, endDate]);
 
   if (state.status === "loading") {
-    return (
-      <div className="text-[0.75rem] text-muted">Wetter wird geladen…</div>
-    );
+    return <div className="text-sm text-ink-soft">Wetter wird geladen…</div>;
   }
   if (state.status === "unavailable") {
     return (
-      <div className="text-[0.75rem] text-muted">
+      <div className="rounded-xl bg-blue-soft px-3 py-2 text-sm text-navy">
         Vorhersage ist erst ca. 16 Tage vor Reisebeginn verfügbar.
       </div>
     );
   }
   if (state.status === "error") {
     return (
-      <div className="text-[0.75rem] text-muted">
+      <div className="text-sm text-ink-soft">
         Wetterdaten aktuell nicht abrufbar.
       </div>
     );
   }
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {state.days.map((d) => (
-        <div
-          key={d.date}
-          className="flex min-w-[68px] flex-col items-center gap-0.5 border border-border bg-white px-2 py-1.5 text-center"
-        >
-          <span className="text-[0.65rem] text-muted">
-            {new Date(`${d.date}T00:00:00`).toLocaleDateString("de-DE", {
-              day: "2-digit",
-              month: "2-digit",
-            })}
-          </span>
-          <span className="text-lg">{WMO_ICON[d.code] ?? "🌡️"}</span>
-          <span className="text-[0.72rem] font-medium">
-            {d.tMax}° / {d.tMin}°
-          </span>
-          {d.precipProb > 30 && (
-            <span className="text-[0.62rem] text-sage">
-              💧{d.precipProb}%
+    <div className="flex gap-2 overflow-x-auto pb-1">
+      {state.days.map((d) => {
+        const Icon = weatherIcon(d.code);
+        return (
+          <div
+            key={d.date}
+            className="flex min-w-[76px] flex-col items-center gap-1 rounded-2xl bg-white px-3 py-2.5 text-center shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+          >
+            <span className="text-[0.68rem] font-medium text-ink-soft">
+              {new Date(`${d.date}T00:00:00`).toLocaleDateString("de-DE", {
+                day: "2-digit",
+                month: "2-digit",
+              })}
             </span>
-          )}
-        </div>
-      ))}
+            <Icon className="h-5 w-5 text-blue" strokeWidth={2} />
+            <span className="text-sm font-bold text-navy">
+              {d.tMax}° / {d.tMin}°
+            </span>
+            {d.precipProb > 30 && (
+              <span className="flex items-center gap-0.5 text-[0.65rem] text-blue">
+                <Droplets className="h-3 w-3" strokeWidth={2} />
+                {d.precipProb}%
+              </span>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 }

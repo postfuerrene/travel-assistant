@@ -1,69 +1,86 @@
+import { BedDouble, Bus, Utensils, Wallet, Ticket } from "lucide-react";
 import { trip } from "@/data/trip";
 import type { BudgetCard } from "@/data/trip";
 
-const ACCENT_BORDER: Record<BudgetCard["accent"], string> = {
-  rust: "border-l-rust",
-  gold: "border-l-gold",
-  sage: "border-l-sage",
-  muted: "border-l-[#7a6e62]",
+const CARD_ICON = [BedDouble, Utensils, Ticket, Bus];
+
+const ACCENT: Record<BudgetCard["accent"], string> = {
+  rust: "bg-orange/10 text-orange",
+  gold: "bg-gold/20 text-gold",
+  sage: "bg-blue-soft text-blue",
+  muted: "bg-navy/5 text-navy",
 };
 
 export default function BudgetSection() {
   return (
     <section
       id="budget"
-      className="mx-auto w-full max-w-[860px] scroll-mt-16 border-b border-border bg-white px-6 py-8"
+      className="mx-auto w-full max-w-[860px] scroll-mt-16 px-5 py-8 sm:px-8"
     >
-      <div className="mb-5 flex items-center gap-3 font-serif text-lg font-bold">
-        <span>💶 Kostenübersicht</span>
-        <span className="h-px flex-1 bg-border" />
+      <div className="mb-5 flex items-center gap-3">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
+          <Wallet className="h-4.5 w-4.5" strokeWidth={2} />
+        </span>
+        <h2 className="text-lg font-bold text-navy">Kostenübersicht</h2>
       </div>
-      <div className="mb-5 grid gap-3 sm:grid-cols-2">
-        {trip.budget.cards.map((card) => (
-          <div
-            key={card.label}
-            className={`border border-l-3 border-border p-4 ${ACCENT_BORDER[card.accent]}`}
-          >
-            <div className="mb-2 text-[0.65rem] tracking-[0.15em] text-muted uppercase">
-              {card.icon} {card.label}
-            </div>
-            <div className="flex flex-col gap-1">
-              {card.rows.map((r) => (
-                <div
-                  key={r.label}
-                  className="flex justify-between text-[0.82rem]"
+      <div className="mb-4 grid gap-3 sm:grid-cols-2">
+        {trip.budget.cards.map((card, i) => {
+          const Icon = CARD_ICON[i];
+          return (
+            <div
+              key={card.label}
+              className="rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+            >
+              <div className="mb-3 flex items-center gap-2">
+                <span
+                  className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${ACCENT[card.accent]}`}
                 >
-                  <span>{r.label}</span>
-                  <span className="font-medium">{r.value}</span>
+                  <Icon className="h-4 w-4" strokeWidth={2} />
+                </span>
+                <span className="text-[0.72rem] font-semibold tracking-wide text-ink-soft uppercase">
+                  {card.label}
+                </span>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                {card.rows.map((r) => (
+                  <div
+                    key={r.label}
+                    className="flex justify-between gap-3 text-sm"
+                  >
+                    <span className="text-ink-soft">{r.label}</span>
+                    <span className="font-semibold whitespace-nowrap text-ink">
+                      {r.value}
+                    </span>
+                  </div>
+                ))}
+                <div className="mt-1 flex justify-between border-t border-line pt-1.5 text-sm font-bold text-navy">
+                  <span>{card.subtotalLabel}</span>
+                  <span>{card.subtotalValue}</span>
                 </div>
-              ))}
-              <div className="mt-1 flex justify-between border-t border-border pt-1 text-[0.82rem] font-medium">
-                <span>{card.subtotalLabel}</span>
-                <span>{card.subtotalValue}</span>
               </div>
+              {card.note && (
+                <div className="mt-2 text-xs text-ink-soft italic">
+                  {card.note}
+                </div>
+              )}
             </div>
-            {card.note && (
-              <div className="mt-2 text-[0.7rem] text-muted italic">
-                {card.note}
-              </div>
-            )}
-          </div>
-        ))}
+          );
+        })}
       </div>
-      <div className="flex items-baseline justify-between bg-ink px-4 py-3 text-cream">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl bg-navy px-5 py-4 text-white">
         <div>
-          <div className="text-[0.75rem] tracking-[0.12em] uppercase">
+          <div className="text-xs font-semibold tracking-wide uppercase">
             {trip.budget.totalLabel}
           </div>
-          <div className="mt-1 text-[0.7rem] text-cream/45">
+          <div className="mt-1 text-xs text-white/45">
             {trip.budget.totalNote}
           </div>
         </div>
         <div>
-          <span className="font-serif text-2xl text-gold">
+          <span className="bg-linear-to-r from-orange to-gold bg-clip-text text-2xl font-extrabold text-transparent">
             {trip.budget.total}
           </span>
-          <span className="ml-2 text-[0.72rem] text-cream/55">
+          <span className="ml-2 text-xs text-white/55">
             {trip.budget.totalPP}
           </span>
         </div>

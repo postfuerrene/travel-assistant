@@ -4,19 +4,20 @@ import { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import { Car, Footprints, MapPin } from "lucide-react";
 import type { City } from "@/data/trip";
 
 function makeIcon(color: string) {
   return L.divIcon({
     className: "",
-    html: `<div style="width:14px;height:14px;border-radius:50%;background:${color};border:2px solid white;box-shadow:0 0 0 1px rgba(0,0,0,0.25)"></div>`,
-    iconSize: [14, 14],
-    iconAnchor: [7, 7],
+    html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 1px 4px rgba(16,25,58,0.4)"></div>`,
+    iconSize: [16, 16],
+    iconAnchor: [8, 8],
   });
 }
 
-const hotelIcon = makeIcon("#b5451b");
-const sightIcon = makeIcon("#5a7a5e");
+const hotelIcon = makeIcon("#FF7648");
+const sightIcon = makeIcon("#4A7FF8");
 
 type RouteGeom = { coords: [number, number][]; mode: "foot" | "car" } | null;
 
@@ -71,24 +72,23 @@ export default function CityMap({ city }: { city: City }) {
   }, [city]);
 
   const center: [number, number] = [city.coord.lat, city.coord.lon];
-  const hotelPin = city.pins.find((p) => p.type === "hotel");
 
   return (
-    <div className="mb-6 overflow-hidden border border-border">
-      <div className="border-b border-border bg-white px-3 py-2 text-[0.68rem] tracking-[0.15em] text-muted uppercase">
-        🗺 Orte in {city.name}
-        {hotelPin && (
-          <>
-            {" "}
-            — <span className="text-rust">Fußwege ab {hotelPin.label.split(" (")[0]}</span>
-          </>
-        )}
+    <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-[0_1px_3px_rgba(16,25,58,0.08)]">
+      <div className="flex items-center gap-2 px-4 py-3">
+        <MapPin className="h-4 w-4 text-orange" strokeWidth={2.5} />
+        <span className="text-sm font-semibold text-navy">
+          Orte in {city.name}
+        </span>
+        <span className="text-xs text-ink-soft">
+          · Fußwege eingebettet
+        </span>
       </div>
       <MapContainer
         center={center}
         zoom={13}
         scrollWheelZoom={false}
-        style={{ height: "340px", width: "100%" }}
+        style={{ height: "300px", width: "100%" }}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -115,37 +115,47 @@ export default function CityMap({ city }: { city: City }) {
               key={city.routes[i].label}
               positions={geom.coords}
               pathOptions={{
-                color: geom.mode === "foot" ? "#c8943a" : "#7a6e62",
+                color: geom.mode === "foot" ? "#FFC757" : "#6b6a66",
                 weight: 4,
-                opacity: 0.8,
+                opacity: 0.85,
                 dashArray: geom.mode === "car" ? "6 6" : undefined,
               }}
             />
           ) : null
         )}
       </MapContainer>
-      <div className="flex flex-wrap gap-2 bg-white p-3">
+      <div className="flex flex-wrap gap-2 p-4">
         {city.pins.map((pin) => (
           <a
             key={pin.label}
             href={pin.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex items-center gap-1 rounded-sm border px-2 py-1 text-[0.78rem] transition-colors hover:bg-cream ${
+            className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition-colors ${
               pin.type === "hotel"
-                ? "border-rust text-rust"
-                : "border-sage text-sage"
+                ? "bg-orange/10 text-orange hover:bg-orange/20"
+                : "bg-blue-soft text-blue hover:bg-blue/20"
             }`}
           >
-            {pin.type === "hotel" ? "🏨" : "📍"} {pin.label}
+            {pin.type === "hotel" ? (
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2.5} />
+            ) : (
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
+            )}
+            {pin.label}
           </a>
         ))}
         {city.routes.map((route) => (
           <span
             key={route.label}
-            className="inline-flex items-center gap-1 rounded-sm border border-gold px-2 py-1 text-[0.78rem] text-gold"
+            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-gold/20 px-3 py-2 text-xs font-medium text-navy"
           >
-            {route.mode === "foot" ? "🚶" : "🚗"} {route.label}
+            {route.mode === "foot" ? (
+              <Footprints className="h-3.5 w-3.5" strokeWidth={2.5} />
+            ) : (
+              <Car className="h-3.5 w-3.5" strokeWidth={2.5} />
+            )}
+            {route.label}
           </span>
         ))}
       </div>
