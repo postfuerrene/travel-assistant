@@ -7,7 +7,7 @@ export default function TipsSection() {
   return (
     <div
       id="tipps"
-      className="mt-6 scroll-mt-16 rounded-3xl bg-navy px-5 py-7 text-white sm:px-7"
+      className="mt-6 scroll-mt-24 rounded-3xl bg-navy px-5 py-7 text-white sm:px-7"
     >
       <h3 className="mb-5 text-lg font-bold text-gold">
         Praktische Reisetipps

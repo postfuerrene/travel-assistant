@@ -14,7 +14,10 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
   const monthName = dateObj.toLocaleDateString("de-DE", { month: "long" });
 
   return (
-    <div className="mb-4 rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(16,25,58,0.08)]">
+    <div
+      id={`day-${entry.day}`}
+      className="mb-4 scroll-mt-24 rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+    >
       <div className="flex items-start gap-3.5">
         <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-linear-to-br from-blue to-navy-light leading-none text-white">
           <span className="text-base font-extrabold">{entry.day}</span>

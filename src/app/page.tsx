@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import NavBar from "@/components/NavBar";
+import DayNav from "@/components/DayNav";
 import BottomTabBar from "@/components/BottomTabBar";
 import BudgetSection from "@/components/BudgetSection";
 import CitySection from "@/components/CitySection";
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="flex min-h-full flex-col bg-cream text-ink">
       <Hero />
-      <NavBar />
+      <DayNav />
       <BudgetSection />
       <main className="mx-auto w-full max-w-[860px] px-5 pb-8 sm:px-8">
         {trip.cities.map((city, i) => (

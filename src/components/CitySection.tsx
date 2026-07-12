@@ -9,7 +9,7 @@ export default function CitySection({ city }: { city: City }) {
   const dates = city.days.map((d) => d.date);
 
   return (
-    <section id={city.id} className="mt-10 scroll-mt-16 animate-fade-up">
+    <section id={city.id} className="mt-10 scroll-mt-24 animate-fade-up">
       <CityHeader city={city} />
       <div className="mb-5">
         <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-ink-soft uppercase">

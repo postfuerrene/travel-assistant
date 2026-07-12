@@ -15,7 +15,7 @@ export default function BudgetSection() {
   return (
     <section
       id="budget"
-      className="mx-auto w-full max-w-[860px] scroll-mt-16 px-5 py-8 sm:px-8"
+      className="mx-auto w-full max-w-[860px] scroll-mt-24 px-5 py-8 sm:px-8"
     >
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
