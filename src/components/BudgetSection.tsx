@@ -19,7 +19,7 @@ export default function BudgetSection() {
       className="mx-auto mt-8 w-full max-w-[860px] scroll-mt-24 px-5 pb-8 sm:px-8"
     >
       <div className="mb-5 flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
+        <span className="flex h-9 w-9 items-center justify-center rounded-full bg-green-deep text-white">
           <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
         </span>
         <h2 className="text-lg font-bold text-navy">Kostenübersicht</h2>
@@ -68,7 +68,7 @@ export default function BudgetSection() {
           );
         })}
       </div>
-      <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl bg-navy px-5 py-4 text-white">
+      <div className="flex flex-wrap items-baseline justify-between gap-2 rounded-2xl bg-green-deep px-5 py-4 text-white">
         <div>
           <div className="text-xs font-semibold tracking-wide uppercase">
             {trip.budget.totalLabel}

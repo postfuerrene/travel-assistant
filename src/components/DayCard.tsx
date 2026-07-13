@@ -19,7 +19,7 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
       className="mb-4 scroll-mt-24 rounded-2xl bg-white/90 p-5 shadow-float-sm backdrop-blur-sm"
     >
       <div className="flex items-start gap-3.5">
-        <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-navy leading-none text-white">
+        <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-green-deep leading-none text-white">
           <span className="text-base font-extrabold">{entry.day}</span>
         </div>
         <div className="min-w-0 flex-1">

@@ -68,19 +68,19 @@ export default function BottomTabBar() {
               key={item.id}
               href={`#${item.id}`}
               className={`flex min-h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-[20px] py-2 transition active:scale-90 ${
-                isActive ? "bg-navy/8" : ""
+                isActive ? "bg-green-soft" : ""
               }`}
             >
               <span
                 className={`flex h-6 w-6 items-center justify-center ${
-                  isActive ? "text-navy" : "text-ink-soft"
+                  isActive ? "text-green-deep" : "text-ink-soft"
                 }`}
               >
                 {item.node}
               </span>
               <span
                 className={`text-[0.62rem] font-medium ${
-                  isActive ? "text-navy" : "text-ink-soft"
+                  isActive ? "text-green-deep" : "text-ink-soft"
                 }`}
               >
                 {item.label}

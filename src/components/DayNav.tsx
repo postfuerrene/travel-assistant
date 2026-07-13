@@ -77,7 +77,7 @@ export default function DayNav() {
         <a
           href="#budget"
           aria-label="Zum Budget springen"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-navy/6"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-green-soft"
         >
           <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
         </a>
@@ -95,13 +95,13 @@ export default function DayNav() {
             let classes =
               "flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center rounded-[18px] px-2.5 transition active:scale-90 ";
             if (isActive) {
-              classes += "bg-navy text-white";
+              classes += "bg-green-deep text-white";
             } else if (isToday) {
               classes += "bg-orange text-navy";
             } else if (isPast) {
               classes += "text-ink-soft/40";
             } else {
-              classes += "text-ink-soft hover:bg-navy/6";
+              classes += "text-ink-soft hover:bg-green-soft";
             }
 
             return (
@@ -119,7 +119,7 @@ export default function DayNav() {
         <a
           href="#tipps"
           aria-label="Zu den Tipps springen"
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-navy/6"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-green-soft"
         >
           <Lightbulb className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
         </a>

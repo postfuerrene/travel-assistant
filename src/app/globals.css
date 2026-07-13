@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --navy: #10193a;
-  --navy-light: #1c2c5c;
+  --navy: #16261d;
+  --navy-light: #24382c;
   --green: #8fbf9e;
   --green-deep: #3f7a54;
   --green-soft: #e6f2e8;
@@ -90,14 +90,14 @@ body {
 /* Soft, diffuse "floating" elevation instead of hard 1px-bordered boxes */
 .shadow-float {
   box-shadow:
-    0 18px 36px -18px rgba(16, 25, 58, 0.16),
-    0 4px 12px -4px rgba(16, 25, 58, 0.06);
+    0 18px 36px -18px rgba(22, 38, 29, 0.16),
+    0 4px 12px -4px rgba(22, 38, 29, 0.06);
 }
 
 .shadow-float-sm {
   box-shadow:
-    0 10px 24px -12px rgba(16, 25, 58, 0.14),
-    0 2px 8px -2px rgba(16, 25, 58, 0.05);
+    0 10px 24px -12px rgba(22, 38, 29, 0.14),
+    0 2px 8px -2px rgba(22, 38, 29, 0.05);
 }
 
 /* Frosted translucent surface for floating nav bars */
@@ -108,7 +108,7 @@ body {
 }
 
 .glass-dark {
-  background: rgba(16, 25, 58, 0.72);
+  background: rgba(22, 38, 29, 0.72);
   backdrop-filter: blur(20px) saturate(1.4);
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
 }

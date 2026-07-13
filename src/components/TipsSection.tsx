@@ -7,16 +7,16 @@ export default function TipsSection() {
   return (
     <div
       id="tipps"
-      className="mt-6 scroll-mt-24 rounded-3xl bg-navy px-5 py-7 text-white sm:px-7"
+      className="mt-6 scroll-mt-24 rounded-3xl bg-green px-5 py-7 text-navy sm:px-7"
     >
-      <h3 className="mb-5 text-lg font-bold text-gold">
+      <h3 className="mb-5 text-lg font-bold text-navy">
         Praktische Reisetipps
       </h3>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {trip.tips.map((tip, i) => {
           const Icon = TIP_ICONS[i];
           return (
-            <div key={tip.title} className="rounded-2xl bg-white/5 p-4">
+            <div key={tip.title} className="rounded-2xl bg-white/50 p-4">
               <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-br from-orange to-gold">
                 <Icon
                   className="h-4 w-4 text-navy"
@@ -24,10 +24,10 @@ export default function TipsSection() {
                   aria-hidden="true"
                 />
               </span>
-              <strong className="mb-1 block text-xs font-semibold tracking-wide text-gold uppercase">
+              <strong className="mb-1 block text-xs font-semibold tracking-wide text-orange-deep uppercase">
                 {tip.title}
               </strong>
-              <p className="text-sm leading-relaxed text-white/70">
+              <p className="text-sm leading-relaxed text-navy/75">
                 {tip.text}
               </p>
             </div>

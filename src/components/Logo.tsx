@@ -8,8 +8,8 @@ export default function Logo({ className }: { className?: string }) {
     >
       <defs>
         <linearGradient id="logo-gradient" x1="0" y1="0" x2="100" y2="100">
-          <stop offset="0%" stopColor="#FF7648" />
-          <stop offset="100%" stopColor="#FFC757" />
+          <stop offset="0%" stopColor="#16261D" />
+          <stop offset="100%" stopColor="#A85A2E" />
         </linearGradient>
       </defs>
       <path

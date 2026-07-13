@@ -10,7 +10,7 @@ import type { City } from "@/data/trip";
 function makeIcon(color: string) {
   return L.divIcon({
     className: "",
-    html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 1px 4px rgba(16,25,58,0.4)"></div>`,
+    html: `<div style="width:16px;height:16px;border-radius:50%;background:${color};border:2.5px solid white;box-shadow:0 1px 4px rgba(22,38,29,0.4)"></div>`,
     iconSize: [16, 16],
     iconAnchor: [8, 8],
   });

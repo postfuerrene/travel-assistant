@@ -169,7 +169,7 @@ export default function ExpenseTracker({
         </select>
         <button
           type="submit"
-          className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-navy px-4 text-sm font-semibold text-white transition active:scale-95 hover:bg-navy-light"
+          className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-green-deep px-4 text-sm font-semibold text-white transition active:scale-95 hover:bg-navy-light"
         >
           <Plus className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
           Hinzufügen
