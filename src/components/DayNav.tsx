@@ -69,54 +69,61 @@ export default function DayNav() {
   }, [days, todayISO]);
 
   return (
-    <div className="safe-top sticky top-0 z-30 flex items-center gap-2 border-b border-line bg-white/95 px-3 py-2 backdrop-blur">
-      <a
-        href="#budget"
-        aria-label="Zum Budget springen"
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition active:scale-90 hover:bg-blue-soft"
-      >
-        <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
-      </a>
-      <div
-        ref={scrollerRef}
-        className="no-scrollbar flex flex-1 gap-2 overflow-x-auto scroll-smooth"
-      >
-        {days.map((d) => {
-          const dateObj = new Date(`${d.date}T00:00:00`);
-          const dayNum = dateObj.getDate();
-          const isPast = d.date < todayISO;
-          const isToday = d.date === todayISO;
-          const isActive = activeDay === d.day;
+    <div
+      className="sticky z-30 mx-3 mt-3"
+      style={{ top: "max(env(safe-area-inset-top, 0px), 12px)" }}
+    >
+      <div className="glass shadow-float flex items-center gap-1 rounded-[28px] px-2 py-2">
+        <a
+          href="#budget"
+          aria-label="Zum Budget springen"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-navy/6"
+        >
+          <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
+        </a>
+        <div
+          ref={scrollerRef}
+          className="no-scrollbar flex flex-1 gap-1 overflow-x-auto scroll-smooth"
+        >
+          {days.map((d) => {
+            const dateObj = new Date(`${d.date}T00:00:00`);
+            const dayNum = dateObj.getDate();
+            const isPast = d.date < todayISO;
+            const isToday = d.date === todayISO;
+            const isActive = activeDay === d.day;
 
-          let classes =
-            "flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center rounded-xl px-2.5 transition active:scale-90 ";
-          if (isActive) {
-            classes += "bg-navy text-white";
-          } else if (isToday) {
-            classes += "bg-orange text-navy";
-          } else if (isPast) {
-            classes += "bg-cream text-ink-soft/40";
-          } else {
-            classes += "bg-cream text-ink-soft";
-          }
+            let classes =
+              "flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center rounded-[18px] px-2.5 transition active:scale-90 ";
+            if (isActive) {
+              classes += "bg-navy text-white";
+            } else if (isToday) {
+              classes += "bg-orange text-navy";
+            } else if (isPast) {
+              classes += "text-ink-soft/40";
+            } else {
+              classes += "text-ink-soft hover:bg-navy/6";
+            }
 
-          return (
-            <a key={d.id} id={d.chipId} href={`#${d.id}`} className={classes}>
-              <span className="text-[0.58rem] font-semibold tracking-wide uppercase">
-                {d.weekdayShort}
-              </span>
-              <span className="text-sm leading-none font-bold">{dayNum}.</span>
-            </a>
-          );
-        })}
+            return (
+              <a key={d.id} id={d.chipId} href={`#${d.id}`} className={classes}>
+                <span className="text-[0.58rem] font-semibold tracking-wide uppercase">
+                  {d.weekdayShort}
+                </span>
+                <span className="text-sm leading-none font-bold">
+                  {dayNum}.
+                </span>
+              </a>
+            );
+          })}
+        </div>
+        <a
+          href="#tipps"
+          aria-label="Zu den Tipps springen"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-navy transition active:scale-90 hover:bg-navy/6"
+        >
+          <Lightbulb className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
+        </a>
       </div>
-      <a
-        href="#tipps"
-        aria-label="Zu den Tipps springen"
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition active:scale-90 hover:bg-blue-soft"
-      >
-        <Lightbulb className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
-      </a>
     </div>
   );
 }

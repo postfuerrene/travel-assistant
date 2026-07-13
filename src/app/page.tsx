@@ -31,7 +31,7 @@ export default function Home() {
       </main>
       <BudgetSection />
       <Footer />
-      <div className="h-16 md:hidden" aria-hidden="true" />
+      <div className="h-24 md:hidden" aria-hidden="true" />
       <BottomTabBar />
     </div>
   );

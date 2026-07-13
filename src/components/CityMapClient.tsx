@@ -6,7 +6,7 @@ import type { City } from "@/data/trip";
 const CityMap = dynamic(() => import("./CityMap"), {
   ssr: false,
   loading: () => (
-    <div className="mb-6 flex h-[340px] items-center justify-center border border-border bg-white text-sm text-muted">
+    <div className="shadow-float mb-5 flex h-[300px] items-center justify-center rounded-3xl bg-white text-sm text-ink-soft">
       Karte wird geladen…
     </div>
   ),

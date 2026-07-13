@@ -103,7 +103,7 @@ export default function ExpenseTracker({
   }
 
   return (
-    <div className="mt-4 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(16,25,58,0.08)]">
+    <div className="mt-4 rounded-2xl bg-white p-4 shadow-float">
       <div className="mb-1 flex items-center justify-between">
         <h3 className="text-sm font-bold text-navy">Eigene Ausgaben</h3>
         <span className="text-xs text-ink-soft">Nur auf diesem Gerät</span>

@@ -50,7 +50,7 @@ export default function Hero() {
           return (
             <div
               key={o.label}
-              className="flex flex-col gap-2 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+              className="flex flex-col gap-2 rounded-2xl bg-white p-4 shadow-float"
             >
               <Icon
                 className="h-5 w-5 text-blue"

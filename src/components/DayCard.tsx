@@ -16,7 +16,7 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
   return (
     <div
       id={`day-${entry.day}`}
-      className="mb-4 scroll-mt-24 rounded-2xl bg-white p-5 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+      className="mb-4 scroll-mt-24 rounded-2xl bg-white p-5 shadow-float-sm"
     >
       <div className="flex items-start gap-3.5">
         <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-linear-to-br from-blue to-navy-light leading-none text-white">
@@ -47,7 +47,7 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
                   href={l.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line px-3 py-2 text-xs font-medium text-navy transition active:scale-95 hover:bg-cream"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-cream px-3 py-2 text-xs font-medium text-navy transition active:scale-95 hover:bg-blue-soft"
                 >
                   <ExternalLink
                     className="h-3 w-3"

@@ -56,15 +56,20 @@ export default function BottomTabBar() {
   ];
 
   return (
-    <nav className="safe-bottom fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 backdrop-blur md:hidden">
-      <div className="flex">
+    <div
+      className="fixed inset-x-0 bottom-0 z-30 flex justify-center px-4 md:hidden"
+      style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 16px)" }}
+    >
+      <nav className="glass shadow-float flex items-center gap-1 rounded-[28px] px-2 py-1.5">
         {items.map((item) => {
           const isActive = active === item.id;
           return (
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-1 py-2 transition active:scale-90"
+              className={`flex min-h-14 w-14 flex-col items-center justify-center gap-0.5 rounded-[20px] py-2 transition active:scale-90 ${
+                isActive ? "bg-navy/8" : ""
+              }`}
             >
               <span
                 className={`flex h-6 w-6 items-center justify-center ${
@@ -83,7 +88,7 @@ export default function BottomTabBar() {
             </a>
           );
         })}
-      </div>
-    </nav>
+      </nav>
+    </div>
   );
 }

@@ -30,7 +30,7 @@ export default function BudgetSection() {
           return (
             <div
               key={card.label}
-              className="rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
+              className="rounded-2xl bg-white p-4 shadow-float"
             >
               <div className="mb-3 flex items-center gap-2">
                 <span

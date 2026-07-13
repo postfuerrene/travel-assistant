@@ -16,8 +16,8 @@ function makeIcon(color: string) {
   });
 }
 
-const hotelIcon = makeIcon("#FF7648");
-const sightIcon = makeIcon("#4A7FF8");
+const hotelIcon = makeIcon("#E08862");
+const sightIcon = makeIcon("#6B8CE0");
 
 type RouteGeom = { coords: [number, number][]; mode: "foot" | "car" } | null;
 
@@ -74,7 +74,7 @@ export default function CityMap({ city }: { city: City }) {
   const center: [number, number] = [city.coord.lat, city.coord.lon];
 
   return (
-    <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-[0_1px_3px_rgba(16,25,58,0.08)]">
+    <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-float">
       <div className="flex items-center gap-2 px-4 py-3">
         <MapPin
           className="h-4 w-4 text-orange"
@@ -119,7 +119,7 @@ export default function CityMap({ city }: { city: City }) {
               key={city.routes[i].label}
               positions={geom.coords}
               pathOptions={{
-                color: geom.mode === "foot" ? "#FFC757" : "#6b6a66",
+                color: geom.mode === "foot" ? "#F0C169" : "#837f77",
                 weight: 4,
                 opacity: 0.85,
                 dashArray: geom.mode === "car" ? "6 6" : undefined,
