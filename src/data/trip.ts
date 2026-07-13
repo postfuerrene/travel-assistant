@@ -128,6 +128,7 @@ export const trip = {
     totalLabel: "Geschätzte Gesamtkosten",
     totalNote: "Hotels bestätigt · übrige Posten Schätzwerte",
     total: "~€ 2.878",
+    totalEUR: 2878,
     totalPP: "~€ 959 / Person",
   },
   tips: [

@@ -13,7 +13,6 @@ export default function Home() {
     <div className="flex min-h-full flex-col bg-cream text-ink">
       <Hero />
       <DayNav />
-      <BudgetSection />
       <main className="mx-auto w-full max-w-[860px] px-5 pb-8 sm:px-8">
         {trip.cities.map((city, i) => (
           <div key={city.id}>
@@ -30,6 +29,7 @@ export default function Home() {
         ))}
         <TipsSection />
       </main>
+      <BudgetSection />
       <Footer />
       <div className="h-16 md:hidden" aria-hidden="true" />
       <BottomTabBar />

@@ -1,6 +1,7 @@
 import { BedDouble, Bus, Utensils, Wallet, Ticket } from "lucide-react";
 import { trip } from "@/data/trip";
 import type { BudgetCard } from "@/data/trip";
+import ExpenseTracker from "./ExpenseTracker";
 
 const CARD_ICON = [BedDouble, Utensils, Ticket, Bus];
 
@@ -15,7 +16,7 @@ export default function BudgetSection() {
   return (
     <section
       id="budget"
-      className="mx-auto w-full max-w-[860px] scroll-mt-24 px-5 py-8 sm:px-8"
+      className="mx-auto mt-8 w-full max-w-[860px] scroll-mt-24 px-5 pb-8 sm:px-8"
     >
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
@@ -85,6 +86,7 @@ export default function BudgetSection() {
           </span>
         </div>
       </div>
+      <ExpenseTracker estimateEUR={trip.budget.totalEUR} />
     </section>
   );
 }
