@@ -6,9 +6,9 @@ import ExpenseTracker from "./ExpenseTracker";
 const CARD_ICON = [BedDouble, Utensils, Ticket, Bus];
 
 const ACCENT: Record<BudgetCard["accent"], string> = {
-  rust: "bg-orange/10 text-orange",
-  gold: "bg-gold/20 text-gold",
-  sage: "bg-blue-soft text-blue",
+  rust: "bg-orange/10 text-orange-deep",
+  gold: "bg-gold/20 text-navy",
+  sage: "bg-blue-soft text-blue-deep",
   muted: "bg-navy/5 text-navy",
 };
 
@@ -20,7 +20,7 @@ export default function BudgetSection() {
     >
       <div className="mb-5 flex items-center gap-3">
         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-navy text-white">
-          <Wallet className="h-4.5 w-4.5" strokeWidth={2} />
+          <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
         </span>
         <h2 className="text-lg font-bold text-navy">Kostenübersicht</h2>
       </div>
@@ -36,7 +36,7 @@ export default function BudgetSection() {
                 <span
                   className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full ${ACCENT[card.accent]}`}
                 >
-                  <Icon className="h-4 w-4" strokeWidth={2} />
+                  <Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                 </span>
                 <span className="text-[0.72rem] font-semibold tracking-wide text-ink-soft uppercase">
                   {card.label}

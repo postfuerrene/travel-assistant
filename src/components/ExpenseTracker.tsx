@@ -169,9 +169,9 @@ export default function ExpenseTracker({
         </select>
         <button
           type="submit"
-          className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-navy px-4 text-sm font-semibold text-white transition-colors hover:bg-navy-light"
+          className="flex min-h-11 items-center justify-center gap-1.5 rounded-xl bg-navy px-4 text-sm font-semibold text-white transition active:scale-95 hover:bg-navy-light"
         >
-          <Plus className="h-4 w-4" strokeWidth={2.5} />
+          <Plus className="h-4 w-4" strokeWidth={2.5} aria-hidden="true" />
           Hinzufügen
         </button>
       </form>
@@ -186,10 +186,10 @@ export default function ExpenseTracker({
               return (
                 <li
                   key={e.id}
-                  className="flex items-center gap-2.5 rounded-xl bg-cream px-3 py-2"
+                  className="flex items-center gap-2.5 rounded-xl bg-cream px-3 py-2 animate-fade-up"
                 >
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white text-navy">
-                    <Icon className="h-4 w-4" strokeWidth={2} />
+                    <Icon className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                   </span>
                   <span className="min-w-0 flex-1 truncate text-sm text-ink">
                     {e.description}
@@ -201,9 +201,9 @@ export default function ExpenseTracker({
                     type="button"
                     onClick={() => removeExpense(e.id)}
                     aria-label={`${e.description} löschen`}
-                    className="flex h-11 w-11 shrink-0 items-center justify-center text-ink-soft transition-colors hover:text-orange"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center text-ink-soft transition active:scale-90 hover:text-orange"
                   >
-                    <Trash2 className="h-4 w-4" strokeWidth={2} />
+                    <Trash2 className="h-4 w-4" strokeWidth={2} aria-hidden="true" />
                   </button>
                 </li>
               );

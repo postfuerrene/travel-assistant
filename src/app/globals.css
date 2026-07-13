@@ -4,8 +4,10 @@
   --navy: #10193a;
   --navy-light: #1c2c5c;
   --blue: #4a7ff8;
+  --blue-deep: #2f5fdb;
   --blue-soft: #e4ecff;
   --orange: #ff7648;
+  --orange-deep: #c4491e;
   --gold: #ffc757;
   --cream: #f0efeb;
   --white: #ffffff;
@@ -18,8 +20,10 @@
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
   --color-blue: var(--blue);
+  --color-blue-deep: var(--blue-deep);
   --color-blue-soft: var(--blue-soft);
   --color-orange: var(--orange);
+  --color-orange-deep: var(--orange-deep);
   --color-gold: var(--gold);
   --color-cream: var(--cream);
   --color-ink: var(--ink);

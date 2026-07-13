@@ -76,7 +76,11 @@ export default function CityMap({ city }: { city: City }) {
   return (
     <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-[0_1px_3px_rgba(16,25,58,0.08)]">
       <div className="flex items-center gap-2 px-4 py-3">
-        <MapPin className="h-4 w-4 text-orange" strokeWidth={2.5} />
+        <MapPin
+          className="h-4 w-4 text-orange"
+          strokeWidth={2.5}
+          aria-hidden="true"
+        />
         <span className="text-sm font-semibold text-navy">
           Orte in {city.name}
         </span>
@@ -131,16 +135,16 @@ export default function CityMap({ city }: { city: City }) {
             href={pin.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition-colors ${
+            className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition active:scale-95 ${
               pin.type === "hotel"
-                ? "bg-orange/10 text-orange hover:bg-orange/20"
-                : "bg-blue-soft text-blue hover:bg-blue/20"
+                ? "bg-orange/10 text-orange-deep hover:bg-orange/20"
+                : "bg-blue-soft text-blue-deep hover:bg-blue/20"
             }`}
           >
             {pin.type === "hotel" ? (
-              <MapPin className="h-3.5 w-3.5" strokeWidth={2.5} />
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
             ) : (
-              <MapPin className="h-3.5 w-3.5" strokeWidth={2} />
+              <MapPin className="h-3.5 w-3.5" strokeWidth={2} aria-hidden="true" />
             )}
             {pin.label}
           </a>
@@ -151,9 +155,9 @@ export default function CityMap({ city }: { city: City }) {
             className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-gold/20 px-3 py-2 text-xs font-medium text-navy"
           >
             {route.mode === "foot" ? (
-              <Footprints className="h-3.5 w-3.5" strokeWidth={2.5} />
+              <Footprints className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
             ) : (
-              <Car className="h-3.5 w-3.5" strokeWidth={2.5} />
+              <Car className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
             )}
             {route.label}
           </span>

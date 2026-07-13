@@ -3,8 +3,8 @@ import type { DayEntry, DayTag } from "@/data/trip";
 
 function tagClass(variant?: DayTag["variant"]) {
   const base = "rounded-full px-2.5 py-1 text-xs font-medium";
-  if (variant === "highlight") return `${base} bg-blue text-white`;
-  if (variant === "family") return `${base} bg-orange text-white`;
+  if (variant === "highlight") return `${base} bg-blue text-navy`;
+  if (variant === "family") return `${base} bg-orange text-navy`;
   return `${base} bg-cream text-ink-soft`;
 }
 
@@ -23,7 +23,7 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
           <span className="text-base font-extrabold">{entry.day}</span>
         </div>
         <div className="min-w-0 flex-1">
-          <div className="mb-0.5 text-xs font-semibold text-blue">
+          <div className="mb-0.5 text-xs font-semibold text-blue-deep">
             {entry.weekdayShort}, {dayNum}. {monthName}
           </div>
           <h3 className="mb-2 text-base font-bold text-navy">
@@ -47,9 +47,13 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
                   href={l.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line px-3 py-2 text-xs font-medium text-navy transition-colors hover:bg-cream"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-line px-3 py-2 text-xs font-medium text-navy transition active:scale-95 hover:bg-cream"
                 >
-                  <ExternalLink className="h-3 w-3" strokeWidth={2.5} />
+                  <ExternalLink
+                    className="h-3 w-3"
+                    strokeWidth={2.5}
+                    aria-hidden="true"
+                  />
                   {l.label}
                 </a>
               ))}

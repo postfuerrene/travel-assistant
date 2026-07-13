@@ -24,7 +24,7 @@ export default function CityHeader({ city }: { city: City }) {
                 {city.nights} Nächte
               </span>
               <span className="flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-semibold">
-                <Car className="h-3.5 w-3.5" strokeWidth={2.5} />
+                <Car className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
                 {city.driveFrom.time} ab {city.driveFrom.from}
               </span>
             </div>
@@ -35,7 +35,11 @@ export default function CityHeader({ city }: { city: City }) {
         </div>
       </div>
       <div className="flex items-center gap-2.5 border-t border-white/10 bg-white/5 px-5 py-3 sm:px-7">
-        <BedDouble className="h-4 w-4 shrink-0 text-gold" strokeWidth={2} />
+        <BedDouble
+          className="h-4 w-4 shrink-0 text-gold"
+          strokeWidth={2}
+          aria-hidden="true"
+        />
         <span className="text-sm text-white/85">
           {city.hotel.name} · {city.hotel.price}
           {city.hotel.confirmed ? " · Bestätigt" : ""} ({city.hotel.dateRange})

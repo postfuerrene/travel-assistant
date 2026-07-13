@@ -52,7 +52,11 @@ export default function Hero() {
               key={o.label}
               className="flex flex-col gap-2 rounded-2xl bg-white p-4 shadow-[0_1px_3px_rgba(16,25,58,0.08)]"
             >
-              <Icon className="h-5 w-5 text-blue" strokeWidth={2} />
+              <Icon
+                className="h-5 w-5 text-blue"
+                strokeWidth={2}
+                aria-hidden="true"
+              />
               <div className="text-2xl font-extrabold text-navy">{o.num}</div>
               <div className="text-[0.7rem] font-medium tracking-wide text-ink-soft uppercase">
                 {o.label}

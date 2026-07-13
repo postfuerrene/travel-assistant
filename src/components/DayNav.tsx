@@ -73,13 +73,13 @@ export default function DayNav() {
       <a
         href="#budget"
         aria-label="Zum Budget springen"
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition-colors hover:bg-blue-soft"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition active:scale-90 hover:bg-blue-soft"
       >
-        <Wallet className="h-4.5 w-4.5" strokeWidth={2} />
+        <Wallet className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
       </a>
       <div
         ref={scrollerRef}
-        className="no-scrollbar flex flex-1 gap-1.5 overflow-x-auto scroll-smooth"
+        className="no-scrollbar flex flex-1 gap-2 overflow-x-auto scroll-smooth"
       >
         {days.map((d) => {
           const dateObj = new Date(`${d.date}T00:00:00`);
@@ -89,11 +89,11 @@ export default function DayNav() {
           const isActive = activeDay === d.day;
 
           let classes =
-            "flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center rounded-xl px-2.5 transition-colors ";
+            "flex min-h-11 min-w-11 shrink-0 flex-col items-center justify-center rounded-xl px-2.5 transition active:scale-90 ";
           if (isActive) {
             classes += "bg-navy text-white";
           } else if (isToday) {
-            classes += "bg-orange text-white";
+            classes += "bg-orange text-navy";
           } else if (isPast) {
             classes += "bg-cream text-ink-soft/40";
           } else {
@@ -113,9 +113,9 @@ export default function DayNav() {
       <a
         href="#tipps"
         aria-label="Zu den Tipps springen"
-        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition-colors hover:bg-blue-soft"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cream text-navy transition active:scale-90 hover:bg-blue-soft"
       >
-        <Lightbulb className="h-4.5 w-4.5" strokeWidth={2} />
+        <Lightbulb className="h-4.5 w-4.5" strokeWidth={2} aria-hidden="true" />
       </a>
     </div>
   );

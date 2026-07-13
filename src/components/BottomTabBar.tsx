@@ -31,18 +31,27 @@ export default function BottomTabBar() {
   }, []);
 
   const items = [
-    { id: "top", label: "Start", node: <Home className="h-5 w-5" strokeWidth={2} /> },
+    {
+      id: "top",
+      label: "Start",
+      node: <Home className="h-5 w-5" strokeWidth={2} aria-hidden="true" />,
+    },
     ...trip.cities.map((c) => ({
       id: c.id,
       label: c.name,
       node: (
-        <span className="text-[0.7rem] leading-none font-bold">{c.number}</span>
+        <span
+          aria-hidden="true"
+          className="text-[0.7rem] leading-none font-bold"
+        >
+          {c.number}
+        </span>
       ),
     })),
     {
       id: "tipps",
       label: "Tipps",
-      node: <Lightbulb className="h-5 w-5" strokeWidth={2} />,
+      node: <Lightbulb className="h-5 w-5" strokeWidth={2} aria-hidden="true" />,
     },
   ];
 
@@ -55,18 +64,18 @@ export default function BottomTabBar() {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-1 py-2"
+              className="flex min-h-[56px] flex-1 flex-col items-center justify-center gap-1 py-2 transition active:scale-90"
             >
               <span
                 className={`flex h-6 w-6 items-center justify-center ${
-                  isActive ? "text-orange" : "text-ink-soft"
+                  isActive ? "text-navy" : "text-ink-soft"
                 }`}
               >
                 {item.node}
               </span>
               <span
                 className={`text-[0.62rem] font-medium ${
-                  isActive ? "text-orange" : "text-ink-soft"
+                  isActive ? "text-navy" : "text-ink-soft"
                 }`}
               >
                 {item.label}

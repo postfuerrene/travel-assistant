@@ -13,7 +13,7 @@ export default function CitySection({ city }: { city: City }) {
       <CityHeader city={city} />
       <div className="mb-5">
         <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-ink-soft uppercase">
-          <CloudSun className="h-3.5 w-3.5" strokeWidth={2.5} />
+          <CloudSun className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
           Wetter
         </div>
         <WeatherWidget coord={city.coord} dates={dates} />

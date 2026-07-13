@@ -42,6 +42,18 @@ function weatherIcon(code: number): LucideIcon {
   return Cloud;
 }
 
+function weatherLabel(code: number): string {
+  if (code === 0) return "Sonnig";
+  if (code === 1 || code === 2) return "Leicht bewölkt";
+  if (code === 3) return "Bewölkt";
+  if (code === 45 || code === 48) return "Neblig";
+  if ([51, 53, 55].includes(code)) return "Nieselregen";
+  if ([61, 63, 65, 80, 81].includes(code)) return "Regen";
+  if ([71, 73, 75].includes(code)) return "Schnee";
+  if ([82, 95, 96, 99].includes(code)) return "Gewitter";
+  return "Bewölkt";
+}
+
 export default function WeatherWidget({
   coord,
   dates,
@@ -117,13 +129,18 @@ export default function WeatherWidget({
                 month: "2-digit",
               })}
             </span>
-            <Icon className="h-5 w-5 text-blue" strokeWidth={2} />
+            <Icon
+              className="h-5 w-5 text-blue"
+              strokeWidth={2}
+              aria-hidden="true"
+            />
+            <span className="sr-only">{weatherLabel(d.code)}</span>
             <span className="text-sm font-bold text-navy">
               {d.tMax}° / {d.tMin}°
             </span>
             {d.precipProb > 30 && (
-              <span className="flex items-center gap-0.5 text-[0.65rem] text-blue">
-                <Droplets className="h-3 w-3" strokeWidth={2} />
+              <span className="flex items-center gap-0.5 text-[0.65rem] text-blue-deep">
+                <Droplets className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
                 {d.precipProb}%
               </span>
             )}

@@ -18,7 +18,11 @@ export default function TipsSection() {
           return (
             <div key={tip.title} className="rounded-2xl bg-white/5 p-4">
               <span className="mb-2 flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-br from-orange to-gold">
-                <Icon className="h-4 w-4 text-navy" strokeWidth={2.5} />
+                <Icon
+                  className="h-4 w-4 text-navy"
+                  strokeWidth={2.5}
+                  aria-hidden="true"
+                />
               </span>
               <strong className="mb-1 block text-xs font-semibold tracking-wide text-gold uppercase">
                 {tip.title}
