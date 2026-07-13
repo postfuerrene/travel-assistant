@@ -3,7 +3,7 @@ import type { DayEntry, DayTag } from "@/data/trip";
 
 function tagClass(variant?: DayTag["variant"]) {
   const base = "rounded-full px-2.5 py-1 text-xs font-medium";
-  if (variant === "highlight") return `${base} bg-blue text-navy`;
+  if (variant === "highlight") return `${base} bg-green text-navy`;
   if (variant === "family") return `${base} bg-orange text-navy`;
   return `${base} bg-cream text-ink-soft`;
 }
@@ -16,14 +16,14 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
   return (
     <div
       id={`day-${entry.day}`}
-      className="mb-4 scroll-mt-24 rounded-2xl bg-white p-5 shadow-float-sm"
+      className="mb-4 scroll-mt-24 rounded-2xl bg-white/90 p-5 shadow-float-sm backdrop-blur-sm"
     >
       <div className="flex items-start gap-3.5">
-        <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-linear-to-br from-blue to-navy-light leading-none text-white">
+        <div className="flex h-11 w-11 shrink-0 flex-col items-center justify-center rounded-2xl bg-navy leading-none text-white">
           <span className="text-base font-extrabold">{entry.day}</span>
         </div>
         <div className="min-w-0 flex-1">
-          <div className="mb-0.5 text-xs font-semibold text-blue-deep">
+          <div className="mb-0.5 text-xs font-semibold text-green-deep">
             {entry.weekdayShort}, {dayNum}. {monthName}
           </div>
           <h3 className="mb-2 text-base font-bold text-navy">
@@ -47,7 +47,7 @@ export default function DayCard({ entry }: { entry: DayEntry }) {
                   href={l.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-cream px-3 py-2 text-xs font-medium text-navy transition active:scale-95 hover:bg-blue-soft"
+                  className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-cream px-3 py-2 text-xs font-medium text-navy transition active:scale-95 hover:bg-green-soft"
                 >
                   <ExternalLink
                     className="h-3 w-3"

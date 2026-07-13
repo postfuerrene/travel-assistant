@@ -103,7 +103,7 @@ export default function ExpenseTracker({
   }
 
   return (
-    <div className="mt-4 rounded-2xl bg-white p-4 shadow-float">
+    <div className="mt-4 rounded-2xl bg-white/85 p-4 shadow-float backdrop-blur-sm">
       <div className="mb-1 flex items-center justify-between">
         <h3 className="text-sm font-bold text-navy">Eigene Ausgaben</h3>
         <span className="text-xs text-ink-soft">Nur auf diesem Gerät</span>
@@ -127,7 +127,7 @@ export default function ExpenseTracker({
         <div className="h-2 overflow-hidden rounded-full bg-cream">
           <div
             className={`h-full rounded-full transition-all ${
-              total > estimateEUR ? "bg-orange" : "bg-blue"
+              total > estimateEUR ? "bg-orange" : "bg-green"
             }`}
             style={{ width: `${percentUsed}%` }}
           />
@@ -144,7 +144,7 @@ export default function ExpenseTracker({
           onChange={(e) => setDescription(e.target.value)}
           placeholder="z.B. Eis am Prater"
           aria-label="Beschreibung"
-          className="min-h-11 rounded-xl border border-line px-3 text-sm focus:ring-2 focus:ring-blue focus:outline-none"
+          className="min-h-11 rounded-xl border border-line px-3 text-sm focus:ring-2 focus:ring-green focus:outline-none"
         />
         <input
           type="text"
@@ -153,13 +153,13 @@ export default function ExpenseTracker({
           onChange={(e) => setAmount(e.target.value)}
           placeholder="€"
           aria-label="Betrag in Euro"
-          className="min-h-11 w-full rounded-xl border border-line px-3 text-sm focus:ring-2 focus:ring-blue focus:outline-none sm:w-24"
+          className="min-h-11 w-full rounded-xl border border-line px-3 text-sm focus:ring-2 focus:ring-green focus:outline-none sm:w-24"
         />
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value as Category)}
           aria-label="Kategorie"
-          className="min-h-11 rounded-xl border border-line px-2 text-sm focus:ring-2 focus:ring-blue focus:outline-none"
+          className="min-h-11 rounded-xl border border-line px-2 text-sm focus:ring-2 focus:ring-green focus:outline-none"
         >
           {CATEGORIES.map((c) => (
             <option key={c} value={c}>

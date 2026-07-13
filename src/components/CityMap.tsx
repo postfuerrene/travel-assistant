@@ -16,8 +16,8 @@ function makeIcon(color: string) {
   });
 }
 
-const hotelIcon = makeIcon("#E08862");
-const sightIcon = makeIcon("#6B8CE0");
+const hotelIcon = makeIcon("#E5A87E");
+const sightIcon = makeIcon("#8FBF9E");
 
 type RouteGeom = { coords: [number, number][]; mode: "foot" | "car" } | null;
 
@@ -74,10 +74,10 @@ export default function CityMap({ city }: { city: City }) {
   const center: [number, number] = [city.coord.lat, city.coord.lon];
 
   return (
-    <div className="mb-5 overflow-hidden rounded-3xl bg-white shadow-float">
+    <div className="mb-5 overflow-hidden rounded-3xl bg-white/90 shadow-float backdrop-blur-sm">
       <div className="flex items-center gap-2 px-4 py-3">
         <MapPin
-          className="h-4 w-4 text-orange"
+          className="h-4 w-4 text-green-deep"
           strokeWidth={2.5}
           aria-hidden="true"
         />
@@ -119,7 +119,7 @@ export default function CityMap({ city }: { city: City }) {
               key={city.routes[i].label}
               positions={geom.coords}
               pathOptions={{
-                color: geom.mode === "foot" ? "#F0C169" : "#837f77",
+                color: geom.mode === "foot" ? "#3F7A54" : "#837f77",
                 weight: 4,
                 opacity: 0.85,
                 dashArray: geom.mode === "car" ? "6 6" : undefined,
@@ -135,10 +135,8 @@ export default function CityMap({ city }: { city: City }) {
             href={pin.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`inline-flex min-h-11 items-center gap-1.5 rounded-full px-3 py-2 text-xs font-medium transition active:scale-95 ${
-              pin.type === "hotel"
-                ? "bg-orange/10 text-orange-deep hover:bg-orange/20"
-                : "bg-blue-soft text-blue-deep hover:bg-blue/20"
+            className={`shadow-float-sm inline-flex min-h-11 items-center gap-1.5 rounded-full bg-white/75 px-3 py-2 text-xs font-medium backdrop-blur-sm transition active:scale-95 hover:bg-white ${
+              pin.type === "hotel" ? "text-orange-deep" : "text-green-deep"
             }`}
           >
             {pin.type === "hotel" ? (
@@ -152,7 +150,7 @@ export default function CityMap({ city }: { city: City }) {
         {city.routes.map((route) => (
           <span
             key={route.label}
-            className="inline-flex min-h-11 items-center gap-1.5 rounded-full bg-gold/20 px-3 py-2 text-xs font-medium text-navy"
+            className="shadow-float-sm inline-flex min-h-11 items-center gap-1.5 rounded-full bg-white/75 px-3 py-2 text-xs font-medium text-navy backdrop-blur-sm"
           >
             {route.mode === "foot" ? (
               <Footprints className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />

@@ -3,25 +3,25 @@
 :root {
   --navy: #10193a;
   --navy-light: #1c2c5c;
-  --blue: #6b8ce0;
-  --blue-deep: #34549e;
-  --blue-soft: #e9eefb;
-  --orange: #e08862;
-  --orange-deep: #a34a22;
+  --green: #8fbf9e;
+  --green-deep: #3f7a54;
+  --green-soft: #e6f2e8;
+  --orange: #e5a87e;
+  --orange-deep: #a85a2e;
   --gold: #f0c169;
-  --cream: #f5f2ea;
+  --cream: #f8f6f0;
   --white: #ffffff;
   --ink: #262420;
   --ink-soft: #837f77;
-  --line: #e9e5da;
+  --line: #ece8dd;
 }
 
 @theme inline {
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
-  --color-blue: var(--blue);
-  --color-blue-deep: var(--blue-deep);
-  --color-blue-soft: var(--blue-soft);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-green-soft: var(--green-soft);
   --color-orange: var(--orange);
   --color-orange-deep: var(--orange-deep);
   --color-gold: var(--gold);

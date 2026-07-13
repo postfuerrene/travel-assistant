@@ -8,7 +8,7 @@ const CARD_ICON = [BedDouble, Utensils, Ticket, Bus];
 const ACCENT: Record<BudgetCard["accent"], string> = {
   rust: "bg-orange/10 text-orange-deep",
   gold: "bg-gold/20 text-navy",
-  sage: "bg-blue-soft text-blue-deep",
+  sage: "bg-green-soft text-green-deep",
   muted: "bg-navy/5 text-navy",
 };
 
@@ -30,7 +30,7 @@ export default function BudgetSection() {
           return (
             <div
               key={card.label}
-              className="rounded-2xl bg-white p-4 shadow-float"
+              className="rounded-2xl bg-white/85 p-4 shadow-float backdrop-blur-sm"
             >
               <div className="mb-3 flex items-center gap-2">
                 <span

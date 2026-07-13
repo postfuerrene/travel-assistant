@@ -50,10 +50,10 @@ export default function Hero() {
           return (
             <div
               key={o.label}
-              className="flex flex-col gap-2 rounded-2xl bg-white p-4 shadow-float"
+              className="flex flex-col gap-2 rounded-2xl bg-white/85 p-4 shadow-float backdrop-blur-sm"
             >
               <Icon
-                className="h-5 w-5 text-blue"
+                className="h-5 w-5 text-green-deep"
                 strokeWidth={2}
                 aria-hidden="true"
               />

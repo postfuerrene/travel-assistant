@@ -101,7 +101,7 @@ export default function WeatherWidget({
   }
   if (state.status === "unavailable") {
     return (
-      <div className="rounded-xl bg-blue-soft px-3 py-2 text-sm text-navy">
+      <div className="rounded-xl bg-green-soft px-3 py-2 text-sm text-navy">
         Vorhersage ist erst ca. 16 Tage vor Reisebeginn verfügbar.
       </div>
     );
@@ -121,7 +121,7 @@ export default function WeatherWidget({
         return (
           <div
             key={d.date}
-            className="flex min-w-[76px] flex-col items-center gap-1 rounded-2xl bg-white px-3 py-2.5 text-center shadow-float-sm"
+            className="flex min-w-[76px] flex-col items-center gap-1 rounded-2xl bg-white/85 px-3 py-2.5 text-center shadow-float-sm backdrop-blur-sm"
           >
             <span className="text-[0.68rem] font-medium text-ink-soft">
               {new Date(`${d.date}T00:00:00`).toLocaleDateString("de-DE", {
@@ -130,7 +130,7 @@ export default function WeatherWidget({
               })}
             </span>
             <Icon
-              className="h-5 w-5 text-blue"
+              className="h-5 w-5 text-green-deep"
               strokeWidth={2}
               aria-hidden="true"
             />
@@ -139,7 +139,7 @@ export default function WeatherWidget({
               {d.tMax}° / {d.tMin}°
             </span>
             {d.precipProb > 30 && (
-              <span className="flex items-center gap-0.5 text-[0.65rem] text-blue-deep">
+              <span className="flex items-center gap-0.5 text-[0.65rem] text-green-deep">
                 <Droplets className="h-3 w-3" strokeWidth={2} aria-hidden="true" />
                 {d.precipProb}%
               </span>
