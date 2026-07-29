@@ -1,7 +1,21 @@
-import { BedDouble, Car } from "lucide-react";
+import { BedDouble, Car, Navigation } from "lucide-react";
 import type { City } from "@/data/trip";
 
 export default function CityHeader({ city }: { city: City }) {
+  const { time, from, mapsUrl } = city.driveFrom;
+  const driveBadgeClass =
+    "flex min-h-11 items-center gap-1.5 rounded-full bg-white/60 px-3 py-1 text-xs font-semibold";
+  const driveBadgeContent = (
+    <>
+      {mapsUrl ? (
+        <Navigation className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
+      ) : (
+        <Car className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
+      )}
+      {time} ab {from}
+    </>
+  );
+
   return (
     <div className="mb-5 overflow-hidden rounded-3xl bg-linear-to-br from-green to-green-soft text-navy">
       <div className="relative px-5 py-6 sm:px-7 sm:py-7">
@@ -23,10 +37,19 @@ export default function CityHeader({ city }: { city: City }) {
               <span className="rounded-full bg-white/60 px-3 py-1 text-xs font-semibold">
                 {city.nights} Nächte
               </span>
-              <span className="flex items-center gap-1.5 rounded-full bg-white/60 px-3 py-1 text-xs font-semibold">
-                <Car className="h-3.5 w-3.5" strokeWidth={2.5} aria-hidden="true" />
-                {city.driveFrom.time} ab {city.driveFrom.from}
-              </span>
+              {mapsUrl ? (
+                <a
+                  href={mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Route ${from} → ${city.name} in Google Maps öffnen`}
+                  className={`${driveBadgeClass} transition active:scale-95 hover:bg-white`}
+                >
+                  {driveBadgeContent}
+                </a>
+              ) : (
+                <span className={driveBadgeClass}>{driveBadgeContent}</span>
+              )}
             </div>
           </div>
           <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-linear-to-br from-orange to-gold text-sm font-extrabold text-navy">

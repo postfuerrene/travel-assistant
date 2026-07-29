@@ -34,7 +34,7 @@ export type City = {
   nights: number;
   region: string;
   hotel: { name: string; price: string; dateRange: string; confirmed: boolean };
-  driveFrom: { time: string; from: string };
+  driveFrom: { time: string; from: string; mapsUrl?: string };
   coord: Coord; // city center, used for weather
   pins: MapPin[];
   routes: WalkRoute[];
@@ -171,7 +171,12 @@ export const trip = {
         dateRange: "01.–03.08.",
         confirmed: true,
       },
-      driveFrom: { time: "~3 Std. 56 Min.", from: "Löbau" },
+      driveFrom: {
+        time: "~3 Std. 56 Min.",
+        from: "Löbau",
+        mapsUrl:
+          "https://www.google.com/maps/dir/?api=1&origin=51.0962292,14.6701781&destination=49.1905085,16.5902434&waypoints=50.1352673,15.0978808&travelmode=driving",
+      },
       coord: { lat: 49.1951, lon: 16.6068 },
       pins: [
         {
