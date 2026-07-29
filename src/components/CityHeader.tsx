@@ -34,7 +34,7 @@ export default function CityHeader({ city }: { city: City }) {
               )}
             </h2>
             <div className="mt-3 flex flex-wrap gap-2">
-              <span className="rounded-full bg-white/60 px-3 py-1 text-xs font-semibold">
+              <span className="flex min-h-11 items-center rounded-full bg-white/60 px-3 py-1 text-xs font-semibold">
                 {city.nights} Nächte
               </span>
               {mapsUrl ? (

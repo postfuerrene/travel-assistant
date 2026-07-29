@@ -297,7 +297,12 @@ export const trip = {
         dateRange: "03.–08.08.",
         confirmed: true,
       },
-      driveFrom: { time: "~1,5 Std.", from: "Brünn" },
+      driveFrom: {
+        time: "~1 Std. 38 Min.",
+        from: "Brünn",
+        mapsUrl:
+          "https://www.google.com/maps/dir/?api=1&origin=49.1905085,16.5902434&destination=48.1877391,16.3781506&travelmode=driving",
+      },
       coord: { lat: 48.2082, lon: 16.3738 },
       pins: [
         {
@@ -364,10 +369,10 @@ export const trip = {
           weekdayShort: "Mo",
           title: "Brünn Vormittag → Anreise Wien → Schönbrunn",
           description:
-            "Letzter Brünn-Vormittag bis ca. 12 Uhr: entspanntes Frühstück, letzter Bummel über den Farmer's Market oder durch die Gassen der Altstadt. Gegen 12 Uhr Abfahrt nach Wien — Ankunft ca. 13:30 Uhr. Einchecken, kurze Mittagspause, dann noch nachmittags zu Schloss Schönbrunn: Der Park ist kostenlos, für die Innenräume Onlineticket kaufen. Tipp: Gleich nebenan liegt der älteste Zoo der Welt!",
+            "Letzter Brünn-Vormittag bis ca. 12 Uhr: entspanntes Frühstück, letzter Bummel über den Farmer's Market oder durch die Gassen der Altstadt. Gegen 12 Uhr Abfahrt nach Wien — Ankunft ca. 13:40 Uhr. Einchecken, kurze Mittagspause, dann noch nachmittags zu Schloss Schönbrunn: Der Park ist kostenlos, für die Innenräume Onlineticket kaufen. Tipp: Gleich nebenan liegt der älteste Zoo der Welt!",
           tags: [
             { text: "Brünn Abfahrt ~12 Uhr" },
-            { text: "~1,5 Std. nach Wien" },
+            { text: "~1 Std. 38 Min. nach Wien" },
             { text: "Schloss Schönbrunn", variant: "highlight" },
             { text: "Tiergarten Schönbrunn", variant: "family" },
             { text: "Park kostenlos" },
@@ -478,7 +483,12 @@ export const trip = {
         dateRange: "08.–10.08.",
         confirmed: true,
       },
-      driveFrom: { time: "~2,5 Std.", from: "Wien" },
+      driveFrom: {
+        time: "~3 Std. 39 Min.",
+        from: "Wien",
+        mapsUrl:
+          "https://www.google.com/maps/dir/?api=1&origin=48.1877731,16.3781512&destination=50.0325298,15.780842&waypoints=49.1775199,16.5661221&travelmode=driving",
+      },
       coord: { lat: 50.0343, lon: 15.7812 },
       pins: [
         {
@@ -581,12 +591,18 @@ export const trip = {
           weekdayShort: "Mo",
           title: "Heimreise nach Löbau",
           description:
-            "Frühzeitig aufbrechen für die ca. 3-stündige Fahrt zurück nach Löbau. Vielleicht noch ein kurzer Stopp in der Pardubitzer Altstadt für ein letztes tschechisches Frühstück — die Innenstadt ist charmant und fußläufig.",
+            "Frühzeitig aufbrechen für die ca. 2,5-stündige Fahrt zurück nach Löbau, mit einem Stopp bei McDonald's in Liberec auf halber Strecke. Vielleicht vorher noch ein kurzer Bummel in der Pardubitzer Altstadt für ein letztes tschechisches Frühstück — die Innenstadt ist charmant und fußläufig.",
           tags: [
             { text: "Altstadtspaziergang" },
-            { text: "~3 Std. Fahrt nach Löbau" },
+            { text: "~2 Std. 35 Min. Fahrt nach Löbau" },
+            { text: "Stopp: McDonald's Liberec" },
           ],
-          links: [],
+          links: [
+            {
+              label: "Route Pardubitz → Löbau",
+              url: "https://www.google.com/maps/dir/?api=1&origin=50.0325298,15.780842&destination=51.0962292,14.6701781&waypoints=50.7422137,15.0521328&travelmode=driving",
+            },
+          ],
         },
       ],
     },
