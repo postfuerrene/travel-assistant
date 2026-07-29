@@ -36,6 +36,8 @@ export type City = {
   hotel: { name: string; price: string; dateRange: string; confirmed: boolean };
   driveFrom: { time: string; from: string; mapsUrl?: string };
   coord: Coord; // city center, used for weather
+  weatherUrl: string;
+  weatherWidget: { id: string; location: string };
   pins: MapPin[];
   routes: WalkRoute[];
   days: DayEntry[];
@@ -58,12 +60,6 @@ export const trip = {
   subtitle: "Eine Rundreise durch Tschechien und Österreich",
   eyebrow: "Familienreise · 1. August – 10. August 2026",
   route: ["Löbau", "Brünn", "Wien", "Pardubitz", "Löbau"],
-  overview: [
-    { num: "10", label: "Tage" },
-    { num: "3", label: "Städte" },
-    { num: "2", label: "Länder" },
-    { num: "∞", label: "Erlebnisse" },
-  ],
   footer:
     "Rundreise · 1. August – 10. August 2026 · Löbau → Brünn → Wien → Pardubitz → Löbau · 10 Tage, 3 Städte, 2 Länder",
   budget: {
@@ -111,25 +107,27 @@ export const trip = {
         accent: "sage",
       },
       {
-        label: "ÖPNV Wien & Benzin",
+        label: "ÖPNV, Benzin & Maut",
         rows: [
           { label: "Wien City Card 5 Tage × 3 Pers.", value: "~€ 255" },
           {
             label: "Benzin ~940 km (8L/100km, 1,70€/L)",
             value: "~€ 128",
           },
+          { label: "Mautvignette Tschechien (10 Tage)", value: "€ 20" },
+          { label: "Mautvignette Österreich (10 Tage)", value: "€ 20" },
         ],
         subtotalLabel: "Zwischensumme",
-        subtotalValue: "~€ 383",
+        subtotalValue: "~€ 423",
         note: "Löbau→Brünn→Wien→Pardubitz→Löbau",
         accent: "muted",
       },
     ] as BudgetCard[],
     totalLabel: "Geschätzte Gesamtkosten",
     totalNote: "Hotels bestätigt · übrige Posten Schätzwerte",
-    total: "~€ 2.878",
-    totalEUR: 2878,
-    totalPP: "~€ 959 / Person",
+    total: "~€ 2.918",
+    totalEUR: 2918,
+    totalPP: "~€ 973 / Person",
   },
   tips: [
     {
@@ -178,6 +176,11 @@ export const trip = {
           "https://www.google.com/maps/dir/?api=1&origin=51.0962292,14.6701781&destination=49.1905085,16.5902434&waypoints=50.1352673,15.0978808&travelmode=driving",
       },
       coord: { lat: 49.1951, lon: 16.6068 },
+      weatherUrl: "https://www.wetter.com/tschechien/bruenn/CZ0JM0002.html",
+      weatherWidget: {
+        id: "wcom-0097e91c8e7388724f29d9d3417c1256",
+        location: "CZ0JM0002",
+      },
       pins: [
         {
           label: "Hotel Botanica (Ausgangspunkt)",
@@ -304,6 +307,12 @@ export const trip = {
           "https://www.google.com/maps/dir/?api=1&origin=49.1905085,16.5902434&destination=48.1877391,16.3781506&travelmode=driving",
       },
       coord: { lat: 48.2082, lon: 16.3738 },
+      weatherUrl:
+        "https://www.wetter.com/wetter_aktuell/wettervorhersage/16_tagesvorhersage/oesterreich/wien/ATAT10678.html",
+      weatherWidget: {
+        id: "wcom-cd71407492186329391c8207e5fde798",
+        location: "ATAT10678",
+      },
       pins: [
         {
           label: "Garner Hotel Prinz Eugen (Ausgangspunkt)",
@@ -490,6 +499,12 @@ export const trip = {
           "https://www.google.com/maps/dir/?api=1&origin=48.1877731,16.3781512&destination=50.0325298,15.780842&waypoints=49.1775199,16.5661221&travelmode=driving",
       },
       coord: { lat: 50.0343, lon: 15.7812 },
+      weatherUrl:
+        "https://www.wetter.com/tschechien/pardubice/CZ0PA0002.html",
+      weatherWidget: {
+        id: "wcom-4d088f91c9298257d77c23e1e9174063",
+        location: "CZ0PA0002",
+      },
       pins: [
         {
           label: "Hotel Euro (Ausgangspunkt)",
