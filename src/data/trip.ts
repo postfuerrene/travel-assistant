@@ -171,7 +171,7 @@ export const trip = {
         dateRange: "01.–03.08.",
         confirmed: true,
       },
-      driveFrom: { time: "~2,5 Std.", from: "Löbau" },
+      driveFrom: { time: "~3 Std. 56 Min.", from: "Löbau" },
       coord: { lat: 49.1951, lon: 16.6068 },
       pins: [
         {
@@ -232,9 +232,10 @@ export const trip = {
           weekdayShort: "Sa",
           title: "Anreise & erster Nachmittag",
           description:
-            "Nach der ca. 2,5-stündigen Fahrt ab Löbau Ankunft in Brünn gegen Mittag. Einchecken, kurze Pause — dann nachmittags direkt zur Burg Špilberk: Die unterirdischen Kasematten sind für Kinder ein echtes Abenteuer, das Museum gut 2 Stunden wert. Abends gemütlicher Spaziergang durch die Altstadt und Abendessen auf dem náměstí Svobody.",
+            "Nach der ca. 4-stündigen Fahrt ab Löbau (mit Einkaufsstopp beim Tesco Hypermarket in Poděbrady) Ankunft in Brünn am Nachmittag. Einchecken, kurze Pause — dann direkt zur Burg Špilberk: Die unterirdischen Kasematten sind für Kinder ein echtes Abenteuer, das Museum gut 2 Stunden wert. Abends gemütlicher Spaziergang durch die Altstadt und Abendessen auf dem náměstí Svobody.",
           tags: [
-            { text: "~2,5 Std. Fahrt ab Löbau" },
+            { text: "~3 Std. 56 Min. Fahrt ab Löbau" },
+            { text: "Stopp: Tesco Poděbrady" },
             { text: "Burg Špilberk (Nachmittag)", variant: "highlight" },
             { text: "Kasematten (Kinder!)", variant: "family" },
             { text: "Abendessen Altstadt" },
