@@ -285,17 +285,30 @@ export const trip = {
           day: 2,
           date: "2026-08-02",
           weekdayShort: "So",
-          title: "Stadtführung & Architektur",
+          title: "Stadtführung, Parks & Architektur",
           description:
-            "Ganzer Tag für die Stadt: Morgens zur barocken Kirche St. Maria Magdalena oberhalb des Sprudels — ein Hauptwerk von Kilian Ignaz Dientzenhofer. Dann zur goldkuppligen russisch-orthodoxen Kirche St. Peter und Paul. Mittags Bummel durch die Lázeňská-Straße mit ihren prachtvollen Kurhotels. Nachmittags hinauf zum Diana-Turm per Standseilbahn ab Grandhotel Pupp — fantastische Aussicht über das enge Teplá-Tal. Abends am Theaterplatz.",
+            "Ganzer Tag für die Stadt: Morgens zum Skalník-Park — der älteste Park Karlsbads (1830), direkt an der Mühlbrunnkolonnade mit herrlichem Blick auf das Kurviertel. Weiter durch den Dvořák-Park mit Kolonnaden, Dvořák-Denkmal und den beiden 200-jährigen Platanendenkmalen. Dann zum Smetana-Park mit dem bekannten Blumenbeet, das täglich das aktuelle Datum zeigt. Nachmittags zur barocken Kirche St. Maria Magdalena und hinauf zum Diana-Turm per Standseilbahn — fantastischer Blick über das enge Teplá-Tal. Abends am Stadttheater.",
           tags: [
+            { text: "Skalník-Park (ältester Park)", variant: "outdoor" },
+            { text: "Dvořák-Park + Platanen", variant: "outdoor" },
+            { text: "Smetana-Park (Datumsbeet)", variant: "outdoor" },
             { text: "Kirche St. Maria Magdalena", variant: "highlight" },
-            { text: "Russisch-orthodoxe Kirche" },
-            { text: "Lázeňská-Straße" },
             { text: "Diana-Turm", variant: "highlight" },
             { text: "Standseilbahn", variant: "family" },
           ],
           links: [
+            {
+              label: "Skalník-Park",
+              url: "https://www.karlovyvary.cz/de/skalnik-park",
+            },
+            {
+              label: "Dvořák-Park",
+              url: "https://www.karlovyvary.cz/de/dvorak-park",
+            },
+            {
+              label: "Smetana-Park",
+              url: "https://www.karlovyvary.cz/de/smetana-park",
+            },
             {
               label: "Diana-Turm & Standseilbahn",
               url: "https://www.karlovyvary.cz/de/diana-aussichtsturm",
@@ -338,12 +351,14 @@ export const trip = {
           day: 4,
           date: "2026-08-04",
           weekdayShort: "Di",
-          title: "Moser Glasmanufaktur & Hirschsprung",
+          title: "Moser Glasmanufaktur, Wildpark & Hirschsprung",
           description:
-            'Vormittags zur weltberühmten Moser Glasmanufaktur — den Glasbläsern direkt bei der Arbeit zusehen und in der Ausstellung die Geschichte des "Königsglases" entdecken. Besichtigung inkl. Museumsshop. Nachmittags hoch zum Hirschsprung (Jelení skok): Ein Aussichtspunkt mit Hirschskulptur über dem Teplá-Tal und Ausblick auf die ganze Kurstadt. Anschließend Spaziergang durch den Stadtwald zurück ins Zentrum.',
+            'Vormittags zur weltberühmten Moser Glasmanufaktur — den Glasbläsern zusehen und die Geschichte des "Königsglases" entdecken. Mittags hinauf zum Wildpark St. Linhart: Auf fast 40 Hektar leben hier Sikahirsche, Damhirsche und Wildschweine. Ein einzigartiges Brückensystem führt bis auf 6 Meter Höhe — toller Blick von oben auf die Tiere! Direkt am Ökozentrum Linhart gelegen. Danach weiter zum Hirschsprung (Jelení skok) mit der Aussichtsskulptur und Blick über das Teplá-Tal, dann Spaziergang durch den Stadtwald zurück.',
           tags: [
             { text: "Moser Glasmanufaktur", variant: "highlight" },
             { text: "Glasbläsern zusehen", variant: "family" },
+            { text: "Wildpark St. Linhart", variant: "highlight" },
+            { text: "Brückenweg 6 m Höhe!", variant: "family" },
             { text: "Hirschsprung-Aussicht", variant: "outdoor" },
             { text: "Stadtwald-Spaziergang", variant: "outdoor" },
           ],
@@ -351,6 +366,14 @@ export const trip = {
             {
               label: "Moser Glasmanufaktur",
               url: "https://www.moser-glass.com/de/besuchszentrum",
+            },
+            {
+              label: "Wildpark St. Linhart",
+              url: "https://www.karlovyvary.cz/de/wildpark-beim-st-linhart",
+            },
+            {
+              label: "Wildpark Betreiber-Website",
+              url: "http://www.llpkv.cz/svaty-linhart/obora-svaty-linhart",
             },
             {
               label: "Hirschsprung",
@@ -387,23 +410,25 @@ export const trip = {
           day: 6,
           date: "2026-08-06",
           weekdayShort: "Do",
-          title: "Slavkov-Wald Wanderung",
+          title: "Tagesausflug Marienbad & Glatzener Moor",
           description:
-            "Wandertag im Slavkov-Wald (Slavkovský les) — Naturschutzgebiet südöstlich von Karlsbad mit stillen Wanderwegen abseits der Touristenmassen. Über 130 km markierte Wanderwege führen durch Mischwälder, an Mooren und kleinen Bächen entlang. Empfohlene Route: ab Karlsbad über den Dreikranzberg (~10 km, mittlere Schwierigkeit). Picknick mitnehmen! Nachmittags zurück in die Stadt, entspannter Abend.",
+            "Tagesausflug nach Marienbad (Mariánské Lázně, ~47 km): Vormittags die berühmte Singende Fontäne und die prächtige Hauptkolonnade erkunden — Marienbad ist nach Karlsbad der eleganteste Kurort Westböhmens. Auf dem Weg oder zurück Halt beim Naturlehrpfad Kladská / Bohlensteg Glatzener Moor: Ein 2,24 km langer Bohlenweg durch eines der ältesten Gebirgsmoore Böhmens auf 800–930 m Höhe im Slavkov-Wald. Moorflächen, Moorpflanzen und seltene Vögel — kostenlos, einfach begehbar, festes Schuhwerk empfohlen.",
           tags: [
-            { text: "Slavkov-Wald Wanderung", variant: "outdoor" },
-            { text: "Dreikranzberg (~10 km)", variant: "outdoor" },
-            { text: "Naturschutzgebiet" },
-            { text: "Picknick", variant: "family" },
+            { text: "Marienbad Hauptkolonnade", variant: "highlight" },
+            { text: "Singende Fontäne", variant: "family" },
+            { text: "Kladská Glatzener Moor", variant: "outdoor" },
+            { text: "Bohlenweg 2,24 km", variant: "outdoor" },
+            { text: "kostenlos" },
+            { text: "~47 km ab Karlsbad" },
           ],
           links: [
             {
-              label: "Slavkov-Wald",
-              url: "https://www.karlovyvary.cz/de/slavkov-wald",
+              label: "Marienbad",
+              url: "https://www.karlovyvary.cz/de/marienbad",
             },
             {
-              label: "Wanderrouten Karlsbad",
-              url: "https://www.karlovyvary.cz/de/routen-und-kurspaziergaenge",
+              label: "Komoot: Naturlehrpfad Kladská",
+              url: "https://www.komoot.com/de-de/highlight/2092542",
             },
           ],
         },
