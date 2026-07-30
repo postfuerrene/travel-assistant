@@ -1,4 +1,4 @@
-import { BedDouble, Car, Navigation } from "lucide-react";
+import { BedDouble, Car, MapPin, Navigation, Phone } from "lucide-react";
 import type { City } from "@/data/trip";
 
 export default function CityHeader({ city }: { city: City }) {
@@ -57,16 +57,38 @@ export default function CityHeader({ city }: { city: City }) {
           </span>
         </div>
       </div>
-      <div className="flex items-center gap-2.5 border-t border-navy/10 bg-white/40 px-5 py-3 sm:px-7">
-        <BedDouble
-          className="h-4 w-4 shrink-0 text-orange-deep"
-          strokeWidth={2}
-          aria-hidden="true"
-        />
-        <span className="text-sm text-navy/85">
-          {city.hotel.name} · {city.hotel.price}
-          {city.hotel.confirmed ? " · Bestätigt" : ""} ({city.hotel.dateRange})
-        </span>
+      <div className="flex flex-col gap-2 border-t border-navy/10 bg-white/40 px-5 py-3 sm:px-7">
+        <div className="flex items-center gap-2.5">
+          <BedDouble
+            className="h-4 w-4 shrink-0 text-orange-deep"
+            strokeWidth={2}
+            aria-hidden="true"
+          />
+          <span className="text-sm text-navy/85">
+            {city.hotel.name} · {city.hotel.price}
+            {city.hotel.confirmed ? " · Bestätigt" : ""} ({city.hotel.dateRange}
+            )
+          </span>
+        </div>
+        {(city.hotel.address || city.hotel.phone) && (
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-xs text-navy/70">
+            {city.hotel.address && (
+              <span className="flex items-center gap-1.5">
+                <MapPin className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden="true" />
+                {city.hotel.address}
+              </span>
+            )}
+            {city.hotel.phone && (
+              <a
+                href={`tel:${city.hotel.phone.replace(/\s+/g, "")}`}
+                className="flex min-h-11 items-center gap-1.5 transition active:scale-95"
+              >
+                <Phone className="h-3.5 w-3.5 shrink-0" strokeWidth={2} aria-hidden="true" />
+                {city.hotel.phone}
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

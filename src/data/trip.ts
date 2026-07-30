@@ -36,7 +36,14 @@ export type City = {
   nativeName?: string;
   nights: number;
   region: string;
-  hotel: { name: string; price: string; dateRange: string; confirmed: boolean };
+  hotel: {
+    name: string;
+    price: string;
+    dateRange: string;
+    confirmed: boolean;
+    address?: string;
+    phone?: string;
+  };
   driveFrom: { time: string; from: string; mapsUrl?: string };
   coord: Coord; // city center, used for weather
   weatherUrl?: string;
@@ -164,14 +171,21 @@ export const trip = {
         price: "€ 1.300,00",
         dateRange: "01.–09.08.",
         confirmed: true,
+        address: "Zámecký vrch 34, 360 01 Karlsbad, Tschechische Republik",
+        phone: "+420 353 341 906",
       },
       driveFrom: {
-        time: "~1,5 Std.",
+        time: "~1,5 Std. (unbestätigt)",
         from: "Löbau",
         mapsUrl:
-          "https://www.google.com/maps/dir/?api=1&origin=51.0962292,14.6701781&destination=50.2268,12.8712&travelmode=driving",
+          "https://www.google.com/maps/dir/?api=1&origin=51.0918244,14.6767628&destination=50.2268,12.8712&waypoints=50.7701589,14.2054928|50.3865878,13.1761715&travelmode=driving",
       },
       coord: { lat: 50.2272, lon: 12.871 },
+      weatherUrl: "https://www.wetter.com/tschechien/karlsbad/CZ0KA0002.html",
+      weatherWidget: {
+        id: "wcom-b53b4c3e5c76fab70f56f56659b98660",
+        location: "CZ0KA0002",
+      },
       pins: [
         {
           label: "Hotel Bristol Palace (Ausgangspunkt)",
@@ -261,9 +275,10 @@ export const trip = {
           weekdayShort: "Sa",
           title: "Anreise & Kolonnadenspaziergang",
           description:
-            "Ca. 1,5 Std. Fahrt ab Löbau, Ankunft gegen Mittag. Da Check-in erst ab 14 Uhr: Koffer am Hotel abgeben und direkt in die Stadt. Erster Pflichtspaziergang entlang der Teplá durch alle Kolonnaden — Mühlbrunnkolonnade, Marktkolonnade, Parkkolonnade bis zur Sprudelkolonnade. Den heißen Sprudel (Vřídlo, 72°C!) bestaunen, der bis 14 m hoch sprudelt. Unbedingt einen Trinkkurbecher kaufen und das Heilwasser probieren — es schmeckt eigenwillig, gehört aber dazu! Abends am Grandhotel Pupp vorbei und erstes tschechisches Abendessen.",
+            "Fahrt ab Löbau mit zwei Zwischenstopps zum Einkaufen — Tesco Hypermarket in Děčín und Tesco Hypermarket in Klášterec nad Ohří — Ankunft in Karlsbad am Mittag/frühen Nachmittag. Da Check-in erst ab 14 Uhr: Koffer am Hotel abgeben und direkt in die Stadt. Erster Pflichtspaziergang entlang der Teplá durch alle Kolonnaden — Mühlbrunnkolonnade, Marktkolonnade, Parkkolonnade bis zur Sprudelkolonnade. Den heißen Sprudel (Vřídlo, 72°C!) bestaunen, der bis 14 m hoch sprudelt. Unbedingt einen Trinkkurbecher kaufen und das Heilwasser probieren — es schmeckt eigenwillig, gehört aber dazu! Abends am Grandhotel Pupp vorbei und erstes tschechisches Abendessen.",
           tags: [
-            { text: "~1,5 Std. ab Löbau" },
+            { text: "Stopp: Tesco Děčín" },
+            { text: "Stopp: Tesco Klášterec nad Ohří" },
             { text: "Kolonnadenspaziergang", variant: "highlight" },
             { text: "Sprudelkolonnade / Vřídlo", variant: "highlight" },
             { text: "Trinkkurbecher kaufen!", variant: "family" },
