@@ -175,7 +175,7 @@ export const trip = {
         phone: "+420 353 341 906",
       },
       driveFrom: {
-        time: "~1,5 Std. (unbestätigt)",
+        time: "~3 Std. 8 Min.",
         from: "Löbau",
         mapsUrl:
           "https://www.google.com/maps/dir/?api=1&origin=51.0918244,14.6767628&destination=50.2268,12.8712&waypoints=50.7701589,14.2054928|50.3865878,13.1761715&travelmode=driving",
