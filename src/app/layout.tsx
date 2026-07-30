@@ -9,9 +9,9 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Rundreise Sommer 2026 — Brünn · Wien · Pardubitz",
+  title: "Karlsbad Sommerurlaub 2026",
   description:
-    "Familien-Reiseplaner: Löbau → Brünn → Wien → Pardubitz → Löbau, 1.–10. August 2026",
+    "Familien-Reiseplaner: Löbau → Karlsbad → Löbau, 1.–9. August 2026",
 };
 
 export const viewport: Viewport = {

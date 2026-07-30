@@ -14,7 +14,10 @@ export type WalkRoute = {
   mode: "foot" | "car";
 };
 
-export type DayTag = { text: string; variant?: "highlight" | "family" };
+export type DayTag = {
+  text: string;
+  variant?: "highlight" | "family" | "outdoor";
+};
 
 export type DayEntry = {
   day: number;
@@ -36,8 +39,8 @@ export type City = {
   hotel: { name: string; price: string; dateRange: string; confirmed: boolean };
   driveFrom: { time: string; from: string; mapsUrl?: string };
   coord: Coord; // city center, used for weather
-  weatherUrl: string;
-  weatherWidget: { id: string; location: string };
+  weatherUrl?: string;
+  weatherWidget?: { id: string; location: string };
   pins: MapPin[];
   routes: WalkRoute[];
   days: DayEntry[];
@@ -56,180 +59,198 @@ export type BudgetCard = {
 export type Tip = { title: string; text: string };
 
 export const trip = {
-  title: { normal: "Brünn · ", em: "Wien", rest: " · Pardubitz" },
-  subtitle: "Eine Rundreise durch Tschechien und Österreich",
-  eyebrow: "Familienreise · 1. August – 10. August 2026",
-  route: ["Löbau", "Brünn", "Wien", "Pardubitz", "Löbau"],
+  title: { normal: "", em: "Karlsbad", rest: "" },
+  subtitle: "Kurstadt · Kultur · Natur · UNESCO-Welterbe · 3 Personen",
+  eyebrow: "Sommerurlaub · 1.–9. August 2026",
+  route: ["Löbau", "Karlsbad", "Löbau"],
   footer:
-    "Rundreise · 1. August – 10. August 2026 · Löbau → Brünn → Wien → Pardubitz → Löbau · 10 Tage, 3 Städte, 2 Länder",
+    "Karlsbad Sommerurlaub · 1.–9. August 2026 · Löbau → Karlsbad → Löbau · 9 Tage, UNESCO-Welterbe",
   budget: {
     cards: [
       {
-        label: "Hotels (inkl. Frühstück)",
+        label: "Hotel (inkl. Frühstück)",
         rows: [
-          { label: "Hotel Botanica, Brünn (2 Nächte)", value: "€ 284,95" },
-          {
-            label: "Garner Hotel Prinz Eugen, Wien (5 Nächte)",
-            value: "€ 864,00",
-          },
-          { label: "Hotel Euro, Pardubitz (2 Nächte)", value: "€ 351,00" },
+          { label: "Hotel Bristol Palace (8 Nächte)", value: "€ 1.300,00" },
+          { label: "Parkplatz (8 Nächte)", value: "€ 160,00" },
         ],
         subtotalLabel: "Zwischensumme",
-        subtotalValue: "€ 1.499,95",
-        note: "Alle Hotels bestätigt",
+        subtotalValue: "€ 1.460,00",
+        note: "Hotel & Parken bestätigt",
         accent: "rust",
       },
       {
         label: "Verpflegung (Mittag + Abend, 3 Personen)",
         rows: [
-          { label: "Tschechien ~4 Tage (günstig)", value: "~€ 200" },
-          { label: "Wien ~6 Tage (gehobener)", value: "~€ 480" },
+          { label: "9 Tage × 2 Mahlzeiten × 22 €", value: "~€ 396" },
         ],
         subtotalLabel: "Zwischensumme",
-        subtotalValue: "~€ 680",
-        note: "Frühstück in Hotels inklusive",
+        subtotalValue: "~€ 396",
+        note: "Tschechien günstig (~20–25 €/Mahlzeit) · Frühstück inkl. · Kurhotels teurer als normale Restaurants",
         accent: "gold",
       },
       {
         label: "Eintritte (3 Personen)",
         rows: [
-          { label: "Burg Špilberk + Ossuar", value: "~€ 51" },
-          { label: "Schönbrunn + Hofburg + Belvedere", value: "~€ 144" },
-          { label: "Prater Riesenrad", value: "~€ 45" },
-          {
-            label: "Aquacentrum + Lebkuchenhaus + Schloss Pardubitz",
-            value: "~€ 75",
-          },
+          { label: "Jan-Becher-Museum", value: "~€ 30" },
+          { label: "Karlsbader Museum", value: "~€ 18" },
+          { label: "Kunstgalerie", value: "~€ 15" },
+          { label: "Moser Glasmanufaktur", value: "~€ 24" },
+          { label: "Diana-Turm + Standseilbahn", value: "~€ 18" },
+          { label: "SOOS Naturschutzgebiet", value: "~€ 15" },
         ],
         subtotalLabel: "Zwischensumme",
-        subtotalValue: "~€ 315",
-        note: "Schönbrunn/Hofburg/Belvedere online vorbuchen!",
+        subtotalValue: "~€ 120",
+        note: "Viele Highlights kostenlos: Kolonnaden, Quellen, Kirchen, Stadtwald",
         accent: "sage",
       },
       {
-        label: "ÖPNV, Benzin & Maut",
+        label: "Benzin & Vignette",
         rows: [
-          { label: "Wien City Card 5 Tage × 3 Pers.", value: "~€ 255" },
           {
-            label: "Benzin ~940 km (8L/100km, 1,70€/L)",
-            value: "~€ 128",
+            label: "Benzin ~280 km × 2 (8L/100km, 1,55€/L)",
+            value: "~€ 70",
           },
-          { label: "Mautvignette Tschechien (10 Tage)", value: "€ 20" },
-          { label: "Mautvignette Österreich (10 Tage)", value: "€ 20" },
+          { label: "Tagesausflüge (~200 km gesamt)", value: "~€ 25" },
+          { label: "Tschechien Vignette 10 Tage", value: "~€ 18" },
         ],
         subtotalLabel: "Zwischensumme",
-        subtotalValue: "~€ 423",
-        note: "Löbau→Brünn→Wien→Pardubitz→Löbau",
+        subtotalValue: "~€ 113",
+        note: "Kein ÖPNV nötig — Karlsbad ist gut zu Fuß erkundbar",
         accent: "muted",
       },
     ] as BudgetCard[],
     totalLabel: "Geschätzte Gesamtkosten",
-    totalNote: "Hotels bestätigt · übrige Posten Schätzwerte",
-    total: "~€ 2.918",
-    totalEUR: 2918,
-    totalPP: "~€ 973 / Person",
+    totalNote: "Hotel & Parken bestätigt · übrige Posten Schätzwerte",
+    total: "~€ 2.089",
+    totalEUR: 2089,
+    totalPP: "~€ 696 / Person",
   },
   tips: [
     {
+      title: "Trinkkurbecher",
+      text: "Unbedingt einen Karlsbader Kurbecher (Lázeňský pohárek) kaufen — es gibt ihn für ~3–8 € an vielen Ständen. Ohne ihn ist das Heilwasser-Trinken nicht dasselbe!",
+    },
+    {
       title: "Währung",
-      text: "In Tschechien gilt die Krone (CZK), nicht der Euro. Bargeld wechseln empfohlen — besser als Wechselstuben an Touristenorten.",
+      text: "Tschechische Krone (CZK). Karte wird viel akzeptiert, aber etwas Bargeld für kleinere Läden und Oblaten-Stände empfohlen.",
     },
     {
-      title: "Tickets vorbuchen",
-      text: "Schönbrunn, Hofburg und Belvedere unbedingt online im Voraus buchen. Im Sommer sonst sehr lange Warteschlangen.",
+      title: "Becherovka vorbuchen",
+      text: "Reservierung für das Jan-Becher-Museum im Voraus unbedingt nötig — im Sommer oft ausgebucht. Online auf der offiziellen Website buchen.",
     },
     {
-      title: "Wien City Card",
-      text: "Ab ~17 €/Tag: Unlimitierte Öffi-Nutzung (U-Bahn, Tram, Bus) plus Rabatte auf viele Attraktionen — lohnt sich für 5 Tage.",
+      title: "SOOS & Wandern",
+      text: "Für SOOS festes Schuhwerk empfohlen — Holzbohlen, aber das Gelände ist moorig. Wasser und Snacks mitnehmen, da kein Restaurant direkt am Naturschutzgebiet.",
     },
     {
-      title: "Ossuar Brünn",
-      text: "Für Kinder ab ca. 10 Jahren geeignet. Mo & Do geschlossen. Tickets besser vorab online reservieren.",
+      title: "Parken in Karlsbad",
+      text: "Kurviertel = eingeschränkte Parkzonen. Am besten Parkhaus am Hotel nutzen oder am Stadtrand parken und zu Fuß gehen — Karlsbad ist perfekt zu Fuß erkundbar.",
     },
     {
-      title: "Schloss Pardubice",
-      text: "Montags geschlossen! Interaktive Kinderausstellung und Aussichtsturm besonders empfehlenswert.",
-    },
-    {
-      title: "Sommer-Tipp",
-      text: "Früh starten vermeidet Hitze und Menschenmassen. Wasserflaschen immer dabei — Trinkbrunnen gibt es in Wien überall.",
+      title: "Hitze",
+      text: "Das enge Teplá-Tal speichert Wärme. Früh morgens oder abends wandern, mittags Museen besuchen. Der Stadtwald bietet auch bei Hitze kühlen Schatten.",
     },
   ] as Tip[],
   cities: [
     {
-      id: "bruenn",
+      id: "karlsbad",
       number: "01",
-      name: "Brünn",
-      nativeName: "Brno",
-      nights: 2,
-      region: "Mähren · Tschechien",
+      name: "Karlsbad",
+      nativeName: "Karlovy Vary",
+      nights: 8,
+      region: "Westböhmen · Tschechien",
       hotel: {
-        name: "Hotel Botanica by goodnite cz",
-        price: "€ 284,95",
-        dateRange: "01.–03.08.",
+        name: "Hotel Bristol Palace",
+        price: "€ 1.300,00",
+        dateRange: "01.–09.08.",
         confirmed: true,
       },
       driveFrom: {
-        time: "~3 Std. 56 Min.",
+        time: "~1,5 Std.",
         from: "Löbau",
         mapsUrl:
-          "https://www.google.com/maps/dir/?api=1&origin=51.0962292,14.6701781&destination=49.1905085,16.5902434&waypoints=50.1352673,15.0978808&travelmode=driving",
+          "https://www.google.com/maps/dir/?api=1&origin=51.0962292,14.6701781&destination=50.2268,12.8712&travelmode=driving",
       },
-      coord: { lat: 49.1951, lon: 16.6068 },
-      weatherUrl: "https://www.wetter.com/tschechien/bruenn/CZ0JM0002.html",
-      weatherWidget: {
-        id: "wcom-0097e91c8e7388724f29d9d3417c1256",
-        location: "CZ0JM0002",
-      },
+      coord: { lat: 50.2272, lon: 12.871 },
       pins: [
         {
-          label: "Hotel Botanica (Ausgangspunkt)",
+          label: "Hotel Bristol Palace (Ausgangspunkt)",
           type: "hotel",
-          coord: { lat: 49.1985, lon: 16.6115 },
-          url: "https://www.openstreetmap.org/?mlat=49.1985&mlon=16.6115#map=17/49.1985/16.6115",
+          coord: { lat: 50.2268, lon: 12.8712 },
+          url: "https://www.openstreetmap.org/?mlat=50.2268&mlon=12.8712#map=17/50.2268/12.8712",
         },
         {
-          label: "Burg Špilberk",
+          label: "Sprudelkolonnade (Vřídlo)",
           type: "sight",
-          coord: { lat: 49.1945, lon: 16.5992 },
-          url: "https://www.openstreetmap.org/?mlat=49.1945&mlon=16.5992#map=17/49.1945/16.5992",
+          coord: { lat: 50.2279, lon: 12.871 },
+          url: "https://www.openstreetmap.org/?mlat=50.2279&mlon=12.8710#map=17/50.2279/12.8710",
         },
         {
-          label: "Dom St. Peter & Paul",
+          label: "Mühlbrunnkolonnade",
           type: "sight",
-          coord: { lat: 49.191, lon: 16.6074 },
-          url: "https://www.openstreetmap.org/?mlat=49.1910&mlon=16.6074#map=17/49.1910/16.6074",
+          coord: { lat: 50.2274, lon: 12.8724 },
+          url: "https://www.openstreetmap.org/?mlat=50.2274&mlon=12.8724#map=17/50.2274/12.8724",
         },
         {
-          label: "Astronomische Uhr",
+          label: "Marktkolonnade",
           type: "sight",
-          coord: { lat: 49.1948, lon: 16.6086 },
-          url: "https://www.openstreetmap.org/?mlat=49.1948&mlon=16.6086#map=17/49.1948/16.6086",
+          coord: { lat: 50.2262, lon: 12.873 },
+          url: "https://www.openstreetmap.org/?mlat=50.2262&mlon=12.8730#map=17/50.2262/12.8730",
         },
         {
-          label: "Altes Rathaus",
+          label: "Grandhotel Pupp",
           type: "sight",
-          coord: { lat: 49.1931, lon: 16.6087 },
-          url: "https://www.openstreetmap.org/?mlat=49.1931&mlon=16.6087#map=17/49.1931/16.6087",
+          coord: { lat: 50.2248, lon: 12.8717 },
+          url: "https://www.openstreetmap.org/?mlat=50.2248&mlon=12.8717#map=17/50.2248/12.8717",
         },
         {
-          label: "Ossuar St. Jakob",
+          label: "Kirche St. Maria Magdalena",
           type: "sight",
-          coord: { lat: 49.1963, lon: 16.608 },
-          url: "https://www.openstreetmap.org/?mlat=49.1963&mlon=16.6080#map=17/49.1963/16.6080",
+          coord: { lat: 50.2296, lon: 12.8721 },
+          url: "https://www.openstreetmap.org/?mlat=50.2296&mlon=12.8721#map=17/50.2296/12.8721",
+        },
+        {
+          label: "Russisch-orthodoxe Kirche",
+          type: "sight",
+          coord: { lat: 50.2305, lon: 12.8744 },
+          url: "https://www.openstreetmap.org/?mlat=50.2305&mlon=12.8744#map=17/50.2305/12.8744",
+        },
+        {
+          label: "Jan-Becher-Museum",
+          type: "sight",
+          coord: { lat: 50.2258, lon: 12.8696 },
+          url: "https://www.openstreetmap.org/?mlat=50.2258&mlon=12.8696#map=17/50.2258/12.8696",
+        },
+        {
+          label: "Kunstgalerie Karlsbad",
+          type: "sight",
+          coord: { lat: 50.2282, lon: 12.8693 },
+          url: "https://www.openstreetmap.org/?mlat=50.2282&mlon=12.8693#map=17/50.2282/12.8693",
+        },
+        {
+          label: "Moser Glasmanufaktur",
+          type: "sight",
+          coord: { lat: 50.224, lon: 12.8664 },
+          url: "https://www.openstreetmap.org/?mlat=50.2240&mlon=12.8664#map=15/50.2240/12.8664",
+        },
+        {
+          label: "Diana-Turm (Standseilbahn)",
+          type: "sight",
+          coord: { lat: 50.2245, lon: 12.8733 },
+          url: "https://www.openstreetmap.org/?mlat=50.2245&mlon=12.8733#map=17/50.2245/12.8733",
         },
       ],
       routes: [
         {
-          label: "Hotel → Špilberk",
-          from: { lat: 49.1985, lon: 16.6115 },
-          to: { lat: 49.1945, lon: 16.5992 },
+          label: "Hotel → Sprudelkolonnade",
+          from: { lat: 50.2268, lon: 12.8712 },
+          to: { lat: 50.2279, lon: 12.871 },
           mode: "foot",
         },
         {
-          label: "Hotel → Altstadt",
-          from: { lat: 49.1985, lon: 16.6115 },
-          to: { lat: 49.1948, lon: 16.6086 },
+          label: "Hotel → Diana-Turm",
+          from: { lat: 50.2268, lon: 12.8712 },
+          to: { lat: 50.2245, lon: 12.8733 },
           mode: "foot",
         },
       ],
@@ -238,180 +259,102 @@ export const trip = {
           day: 1,
           date: "2026-08-01",
           weekdayShort: "Sa",
-          title: "Anreise & erster Nachmittag",
+          title: "Anreise & Kolonnadenspaziergang",
           description:
-            "Nach der ca. 4-stündigen Fahrt ab Löbau (mit Einkaufsstopp beim Tesco Hypermarket in Poděbrady) Ankunft in Brünn am Nachmittag. Einchecken, kurze Pause — dann direkt zur Burg Špilberk: Die unterirdischen Kasematten sind für Kinder ein echtes Abenteuer, das Museum gut 2 Stunden wert. Abends gemütlicher Spaziergang durch die Altstadt und Abendessen auf dem náměstí Svobody.",
+            "Ca. 1,5 Std. Fahrt ab Löbau, Ankunft gegen Mittag. Da Check-in erst ab 14 Uhr: Koffer am Hotel abgeben und direkt in die Stadt. Erster Pflichtspaziergang entlang der Teplá durch alle Kolonnaden — Mühlbrunnkolonnade, Marktkolonnade, Parkkolonnade bis zur Sprudelkolonnade. Den heißen Sprudel (Vřídlo, 72°C!) bestaunen, der bis 14 m hoch sprudelt. Unbedingt einen Trinkkurbecher kaufen und das Heilwasser probieren — es schmeckt eigenwillig, gehört aber dazu! Abends am Grandhotel Pupp vorbei und erstes tschechisches Abendessen.",
           tags: [
-            { text: "~3 Std. 56 Min. Fahrt ab Löbau" },
-            { text: "Stopp: Tesco Poděbrady" },
-            { text: "Burg Špilberk (Nachmittag)", variant: "highlight" },
-            { text: "Kasematten (Kinder!)", variant: "family" },
-            { text: "Abendessen Altstadt" },
+            { text: "~1,5 Std. ab Löbau" },
+            { text: "Kolonnadenspaziergang", variant: "highlight" },
+            { text: "Sprudelkolonnade / Vřídlo", variant: "highlight" },
+            { text: "Trinkkurbecher kaufen!", variant: "family" },
+            { text: "Grandhotel Pupp" },
           ],
           links: [
-            { label: "Burg Špilberk", url: "https://www.spilberk.cz/de/" },
-            { label: "Touristinfo Brünn", url: "https://www.ticbrno.cz/de" },
+            {
+              label: "Kolonnaden & Quellen",
+              url: "https://www.karlovyvary.cz/de/kolonnaden-und-quellen",
+            },
+            {
+              label: "Sprudelkolonnade",
+              url: "https://www.karlovyvary.cz/de/sprudelkolonnade",
+            },
+            { label: "Grandhotel Pupp", url: "https://www.pupp.cz/de" },
           ],
         },
         {
           day: 2,
           date: "2026-08-02",
           weekdayShort: "So",
-          title: "Ganzer Tag Brünn",
+          title: "Stadtführung & Architektur",
           description:
-            "Der volle Brünn-Tag! Vormittags: Altes Rathaus mit Turmbesteigung — schaut nach dem legendären Krokodil im Eingangsgewölbe. Um 11 Uhr auf dem Freiheitsplatz an der Astronomischen Uhr stehen und versuchen, eine der Glaskugeln zu fangen. Mittags Pause im Café. Nachmittags: Ossuar bei St. Jakob — zweitgrößtes in Europa, beeindruckend inszeniert (ab ca. 10 Jahren). Abends hoch zum Dom St. Peter und Paul für den Blick über die Stadt beim Sonnenuntergang. ⚠ Rathaus nur Fr–So · Ossuar geschlossen Mo & Do",
+            "Ganzer Tag für die Stadt: Morgens zur barocken Kirche St. Maria Magdalena oberhalb des Sprudels — ein Hauptwerk von Kilian Ignaz Dientzenhofer. Dann zur goldkuppligen russisch-orthodoxen Kirche St. Peter und Paul. Mittags Bummel durch die Lázeňská-Straße mit ihren prachtvollen Kurhotels. Nachmittags hinauf zum Diana-Turm per Standseilbahn ab Grandhotel Pupp — fantastische Aussicht über das enge Teplá-Tal. Abends am Theaterplatz.",
           tags: [
-            { text: "Astronomische Uhr (11 Uhr!)", variant: "highlight" },
-            { text: "Altes Rathaus + Turm" },
-            { text: "Ossuar St. Jakob", variant: "highlight" },
-            { text: "Dom St. Peter & Paul" },
-            { text: "náměstí Svobody" },
+            { text: "Kirche St. Maria Magdalena", variant: "highlight" },
+            { text: "Russisch-orthodoxe Kirche" },
+            { text: "Lázeňská-Straße" },
+            { text: "Diana-Turm", variant: "highlight" },
+            { text: "Standseilbahn", variant: "family" },
           ],
           links: [
             {
-              label: "Astronomische Uhr",
-              url: "https://www.gotobrno.cz/de/ort/astronomische-uhr/",
+              label: "Diana-Turm & Standseilbahn",
+              url: "https://www.karlovyvary.cz/de/diana-aussichtsturm",
             },
             {
-              label: "Altes Rathaus",
-              url: "https://www.gotobrno.cz/de/ort/altes-rathaus-stara-radnice/",
-            },
-            {
-              label: "Ossuar St. Jakob",
-              url: "https://podzemibrno.cz/de/mista-v-podzemi/kostnice-u-sv-jakuba/",
-            },
-            {
-              label: "Dom St. Peter & Paul",
-              url: "https://www.katedrala-brno.cz/",
+              label: "Kirche St. Maria Magdalena",
+              url: "https://www.karlovyvary.cz/de/kirche-st-maria-magdalena",
             },
           ],
         },
-      ],
-    },
-    {
-      id: "wien",
-      number: "02",
-      name: "Wien",
-      nights: 5,
-      region: "Österreich · Kaiserliche Metropole",
-      hotel: {
-        name: "Garner Hotel Vienna Prinz Eugen",
-        price: "€ 864",
-        dateRange: "03.–08.08.",
-        confirmed: true,
-      },
-      driveFrom: {
-        time: "~1 Std. 38 Min.",
-        from: "Brünn",
-        mapsUrl:
-          "https://www.google.com/maps/dir/?api=1&origin=49.1905085,16.5902434&destination=48.1877391,16.3781506&travelmode=driving",
-      },
-      coord: { lat: 48.2082, lon: 16.3738 },
-      weatherUrl:
-        "https://www.wetter.com/wetter_aktuell/wettervorhersage/16_tagesvorhersage/oesterreich/wien/ATAT10678.html",
-      weatherWidget: {
-        id: "wcom-cd71407492186329391c8207e5fde798",
-        location: "ATAT10678",
-      },
-      pins: [
-        {
-          label: "Garner Hotel Prinz Eugen (Ausgangspunkt)",
-          type: "hotel",
-          coord: { lat: 48.1927, lon: 16.3784 },
-          url: "https://www.openstreetmap.org/?mlat=48.1927&mlon=16.3784#map=17/48.1927/16.3784",
-        },
-        {
-          label: "Schloss Schönbrunn",
-          type: "sight",
-          coord: { lat: 48.1858, lon: 16.3128 },
-          url: "https://www.openstreetmap.org/?mlat=48.1858&mlon=16.3128#map=16/48.1858/16.3128",
-        },
-        {
-          label: "Hofburg / Sisi-Museum",
-          type: "sight",
-          coord: { lat: 48.2057, lon: 16.3648 },
-          url: "https://www.openstreetmap.org/?mlat=48.2057&mlon=16.3648#map=16/48.2057/16.3648",
-        },
-        {
-          label: "Hundertwasserhaus",
-          type: "sight",
-          coord: { lat: 48.2073, lon: 16.3943 },
-          url: "https://www.openstreetmap.org/?mlat=48.2073&mlon=16.3943#map=17/48.2073/16.3943",
-        },
-        {
-          label: "Prater / Riesenrad",
-          type: "sight",
-          coord: { lat: 48.2155, lon: 16.4002 },
-          url: "https://www.openstreetmap.org/?mlat=48.2155&mlon=16.4002#map=16/48.2155/16.4002",
-        },
-        {
-          label: "Belvedere",
-          type: "sight",
-          coord: { lat: 48.1915, lon: 16.3809 },
-          url: "https://www.openstreetmap.org/?mlat=48.1915&mlon=16.3809#map=16/48.1915/16.3809",
-        },
-        {
-          label: "Naschmarkt",
-          type: "sight",
-          coord: { lat: 48.1993, lon: 16.3639 },
-          url: "https://www.openstreetmap.org/?mlat=48.1993&mlon=16.3639#map=16/48.1993/16.3639",
-        },
-      ],
-      routes: [
-        {
-          label: "Hotel → Belvedere",
-          from: { lat: 48.1927, lon: 16.3784 },
-          to: { lat: 48.1915, lon: 16.3809 },
-          mode: "foot",
-        },
-        {
-          label: "Hotel → Hundertwasserhaus",
-          from: { lat: 48.1927, lon: 16.3784 },
-          to: { lat: 48.2073, lon: 16.3943 },
-          mode: "foot",
-        },
-      ],
-      days: [
         {
           day: 3,
           date: "2026-08-03",
           weekdayShort: "Mo",
-          title: "Brünn Vormittag → Anreise Wien → Schönbrunn",
+          title: "Jan-Becher-Museum & Kunstgalerie",
           description:
-            "Letzter Brünn-Vormittag bis ca. 12 Uhr: entspanntes Frühstück, letzter Bummel über den Farmer's Market oder durch die Gassen der Altstadt. Gegen 12 Uhr Abfahrt nach Wien — Ankunft ca. 13:40 Uhr. Einchecken, kurze Mittagspause, dann noch nachmittags zu Schloss Schönbrunn: Der Park ist kostenlos, für die Innenräume Onlineticket kaufen. Tipp: Gleich nebenan liegt der älteste Zoo der Welt!",
+            'Kultureller Museumstag: Vormittags das Jan-Becher-Museum (The Home of Becherovka) — Führung durch die originalen Produktionskeller, Kurzfilm, und zum Abschluss die legendäre Degustation der "13. Karlsbader Quelle". Reservierung im Voraus nötig! Nachmittags die Kunstgalerie Karlsbad mit ihrer Sammlung tschechischer und slowakischer Kunst des 20. Jahrhunderts sowie wechselnden Ausstellungen. Abends das prächtige Stadttheater von außen bewundern.',
           tags: [
-            { text: "Brünn Abfahrt ~12 Uhr" },
-            { text: "~1 Std. 38 Min. nach Wien" },
-            { text: "Schloss Schönbrunn", variant: "highlight" },
-            { text: "Tiergarten Schönbrunn", variant: "family" },
-            { text: "Park kostenlos" },
+            { text: "Jan-Becher-Museum", variant: "highlight" },
+            { text: "Becherovka-Degustation", variant: "family" },
+            { text: "Kunstgalerie Karlsbad", variant: "highlight" },
+            { text: "Stadttheater" },
           ],
           links: [
-            { label: "Schloss Schönbrunn", url: "https://www.schoenbrunn.at/" },
-            { label: "Tiergarten Schönbrunn", url: "https://www.zoovienna.at/" },
+            {
+              label: "Becherovka-Museum (Reservierung!)",
+              url: "https://www.karlovyvary.cz/de/besucherzentrum-home-becherovka",
+            },
+            {
+              label: "Kunstgalerie Karlsbad",
+              url: "https://www.galeriekvary.cz/de/",
+            },
+            {
+              label: "Stadttheater",
+              url: "https://www.karlovyvary.cz/de/stadttheater",
+            },
           ],
         },
         {
           day: 4,
           date: "2026-08-04",
           weekdayShort: "Di",
-          title: "Hofburg & Hundertwasserhaus",
+          title: "Moser Glasmanufaktur & Hirschsprung",
           description:
-            "Vormittags in der Hofburg: Das Sisi-Museum und die Kaiserappartements sind lebendig inszeniert — besonders für Kinder sehr anschaulich, 2–3 Stunden einplanen. Nachmittags mit der Straßenbahn zum farbenprächtigen Hundertwasserhaus — Souvenirlädchen gegenüber nicht verpassen.",
+            'Vormittags zur weltberühmten Moser Glasmanufaktur — den Glasbläsern direkt bei der Arbeit zusehen und in der Ausstellung die Geschichte des "Königsglases" entdecken. Besichtigung inkl. Museumsshop. Nachmittags hoch zum Hirschsprung (Jelení skok): Ein Aussichtspunkt mit Hirschskulptur über dem Teplá-Tal und Ausblick auf die ganze Kurstadt. Anschließend Spaziergang durch den Stadtwald zurück ins Zentrum.',
           tags: [
-            { text: "Hofburg / Sisi-Museum", variant: "highlight" },
-            { text: "Kaiserappartements", variant: "family" },
-            { text: "Hundertwasserhaus" },
-            { text: "Straßenbahn-Tour" },
+            { text: "Moser Glasmanufaktur", variant: "highlight" },
+            { text: "Glasbläsern zusehen", variant: "family" },
+            { text: "Hirschsprung-Aussicht", variant: "outdoor" },
+            { text: "Stadtwald-Spaziergang", variant: "outdoor" },
           ],
           links: [
             {
-              label: "Sisi-Museum & Hofburg",
-              url: "https://www.sisimuseum-hofburg.at/",
+              label: "Moser Glasmanufaktur",
+              url: "https://www.moser-glass.com/de/besuchszentrum",
             },
             {
-              label: "Hundertwasserhaus",
-              url: "https://www.hundertwasser-village.com/",
+              label: "Hirschsprung",
+              url: "https://www.karlovyvary.cz/de/jeleni-skok-hirschsprung",
             },
           ],
         },
@@ -419,42 +362,48 @@ export const trip = {
           day: 5,
           date: "2026-08-05",
           weekdayShort: "Mi",
-          title: "Prater & Belvedere",
+          title: "Tagesausflug SOOS & Franzensbad",
           description:
-            "Vormittags im Wurstelprater — das Riesenrad ist absolutes Pflichtprogramm (ca. 15 € p.P.), der Park selbst ist kostenlos zu betreten. Nachmittags Schloss Belvedere: Der Garten ist gratis, drinnen wartet Klimts Original-„Kuss“ — ein Moment fürs Leben.",
+            "Früh aufbrechen für den Highlight-Ausflug: erst nach Franzensbad (Františkovy Lázně), dem kleinen eleganten Schwester-Kurort (~45 km), kurzer Bummel durch die pastellfarbenen Kurhotels und Parks. Dann weiter zum SOOS-Naturschutzgebiet (~52 km ab Karlsbad) — ein 2-km-Holzbohlenpfad durch ein urzeitliches Hochmoor mit sprudelnden Mofetten (Sumpfvulkanen), Mineralquellen und fast 100 Vogelarten. Geologischer Park und Dinosauriermuseum direkt dabei. Ein absolutes Naturerlebnis!",
           tags: [
-            { text: "Riesenrad (Pflicht!)", variant: "family" },
-            { text: "Prater Wurstelprater", variant: "highlight" },
-            { text: "Belvedere — Klimts Kuss", variant: "highlight" },
-            { text: "Garten kostenlos" },
+            { text: "Franzensbad" },
+            { text: "SOOS Naturschutzgebiet", variant: "highlight" },
+            { text: "Mofetten / Sumpfvulkane", variant: "outdoor" },
+            { text: "2-km-Moorpfad", variant: "outdoor" },
+            { text: "Dinosauriermuseum", variant: "family" },
           ],
           links: [
-            { label: "Wiener Riesenrad", url: "https://www.wienerriesenrad.com/" },
-            { label: "Wurstelprater", url: "https://www.prater.at/" },
-            { label: "Belvedere", url: "https://www.belvedere.at/" },
+            {
+              label: "SOOS Naturschutzgebiet",
+              url: "https://www.karlovyvary.cz/de/soos",
+            },
+            {
+              label: "Franzensbad",
+              url: "https://www.karlovyvary.cz/de/franzensbad",
+            },
           ],
         },
         {
           day: 6,
           date: "2026-08-06",
           weekdayShort: "Do",
-          title: "Freier Tag & Naschmarkt",
+          title: "Slavkov-Wald Wanderung",
           description:
-            "Entspannter Morgen auf dem Naschmarkt — Wiens größtem Freiluftmarkt, ideal zum Frühstücken und Schlendern. Nachmittags nach Lust: Naturhistorisches Museum (sehr kindgerecht mit Dinosauriern!), Stadtpark mit Straußdenkmal, oder einfach Kaffeehaus und Apfelstrudel genießen.",
+            "Wandertag im Slavkov-Wald (Slavkovský les) — Naturschutzgebiet südöstlich von Karlsbad mit stillen Wanderwegen abseits der Touristenmassen. Über 130 km markierte Wanderwege führen durch Mischwälder, an Mooren und kleinen Bächen entlang. Empfohlene Route: ab Karlsbad über den Dreikranzberg (~10 km, mittlere Schwierigkeit). Picknick mitnehmen! Nachmittags zurück in die Stadt, entspannter Abend.",
           tags: [
-            { text: "Naschmarkt" },
-            { text: "Naturhistorisches Museum", variant: "family" },
-            { text: "Stadtpark" },
-            { text: "Kaffeehaus-Kultur" },
+            { text: "Slavkov-Wald Wanderung", variant: "outdoor" },
+            { text: "Dreikranzberg (~10 km)", variant: "outdoor" },
+            { text: "Naturschutzgebiet" },
+            { text: "Picknick", variant: "family" },
           ],
           links: [
             {
-              label: "Naturhistorisches Museum",
-              url: "https://www.nhm-wien.ac.at/",
+              label: "Slavkov-Wald",
+              url: "https://www.karlovyvary.cz/de/slavkov-wald",
             },
             {
-              label: "Naschmarkt",
-              url: "https://www.wien.info/de/sehen-erleben/einkaufen/naschmarkt",
+              label: "Wanderrouten Karlsbad",
+              url: "https://www.karlovyvary.cz/de/routen-und-kurspaziergaenge",
             },
           ],
         },
@@ -462,117 +411,42 @@ export const trip = {
           day: 7,
           date: "2026-08-07",
           weekdayShort: "Fr",
-          title: "Wien-Abschluss & Abreise nach Pardubitz",
+          title: "Tagesausflug Eger (Cheb)",
           description:
-            "Letzter Wien-Morgen: Souvenirs auf der Mariahilfer Straße, vielleicht nochmal ein Eis im Prater. Dann Aufbruch Richtung Pardubitz — Ankunft nachmittags, direkt zum Renaissanceschloss. Hinweis: Schlossmuseum ist montags geschlossen.",
+            "Tagesausflug in die nahe Grenzstadt Eger (Cheb, ~40 km) — eine der besterhaltenen mittelalterlichen Altstädte Böhmens mit dem eindrucksvollen Schachbrettmarkt (Špalíček). Cheb-Burg mit schwarzem Turm und romanischer Doppelkapelle besichtigen. Das Cheb-Museum zeigt die Geschichte der Stadt und der Egerer Region. Highlight: hier wurde Wallenstein ermordet — das Museum zeigt den Tatort. Abends zurück nach Karlsbad.",
           tags: [
-            { text: "Mariahilfer Straße" },
-            { text: "Schloss Pardubice", variant: "highlight" },
-            { text: "Pfauen im Schlosspark", variant: "family" },
+            { text: "Altstadt Eger / Cheb", variant: "highlight" },
+            { text: "Cheb-Burg", variant: "highlight" },
+            { text: "Cheb-Museum (Wallenstein!)" },
+            { text: "Špalíček-Markt" },
+            { text: "~40 km ab Karlsbad" },
           ],
           links: [
             {
-              label: "Schloss Pardubice",
-              url: "https://www.zamek-pardubice.cz/de",
+              label: "Museum Cheb",
+              url: "https://www.karlovyvary.cz/de/museum-cheb",
             },
+            { label: "Burg Cheb", url: "https://www.hradcheb.cz/de/" },
           ],
         },
-      ],
-    },
-    {
-      id: "pardubice",
-      number: "03",
-      name: "Pardubitz",
-      nativeName: "Pardubice",
-      nights: 2,
-      region: "Ostböhmen · Tschechien",
-      hotel: {
-        name: "Hotel Euro",
-        price: "€ 351",
-        dateRange: "08.–10.08.",
-        confirmed: true,
-      },
-      driveFrom: {
-        time: "~3 Std. 39 Min.",
-        from: "Wien",
-        mapsUrl:
-          "https://www.google.com/maps/dir/?api=1&origin=48.1877731,16.3781512&destination=50.0325298,15.780842&waypoints=49.1775199,16.5661221&travelmode=driving",
-      },
-      coord: { lat: 50.0343, lon: 15.7812 },
-      weatherUrl:
-        "https://www.wetter.com/tschechien/pardubice/CZ0PA0002.html",
-      weatherWidget: {
-        id: "wcom-4d088f91c9298257d77c23e1e9174063",
-        location: "CZ0PA0002",
-      },
-      pins: [
-        {
-          label: "Hotel Euro (Ausgangspunkt)",
-          type: "hotel",
-          coord: { lat: 50.0368, lon: 15.7796 },
-          url: "https://www.openstreetmap.org/?mlat=50.0368&mlon=15.7796#map=17/50.0368/15.7796",
-        },
-        {
-          label: "Schloss Pardubice",
-          type: "sight",
-          coord: { lat: 50.0414, lon: 15.7765 },
-          url: "https://www.openstreetmap.org/?mlat=50.0414&mlon=15.7765#map=17/50.0414/15.7765",
-        },
-        {
-          label: "Aquacentrum Pardubice",
-          type: "sight",
-          coord: { lat: 50.0337, lon: 15.7825 },
-          url: "https://www.openstreetmap.org/?mlat=50.0337&mlon=15.7825#map=17/50.0337/15.7825",
-        },
-        {
-          label: "Lebkuchenhaus Ráby",
-          type: "sight",
-          coord: { lat: 50.0783, lon: 15.8067 },
-          url: "https://www.openstreetmap.org/?mlat=50.0783&mlon=15.8067#map=15/50.0783/15.8067",
-        },
-        {
-          label: "Altstadt / Marktplatz",
-          type: "sight",
-          coord: { lat: 50.0397, lon: 15.7758 },
-          url: "https://www.openstreetmap.org/?mlat=50.0397&mlon=15.7758#map=17/50.0397/15.7758",
-        },
-      ],
-      routes: [
-        {
-          label: "Hotel → Schloss",
-          from: { lat: 50.0368, lon: 15.7796 },
-          to: { lat: 50.0414, lon: 15.7765 },
-          mode: "foot",
-        },
-        {
-          label: "Hotel → Lebkuchenhaus",
-          from: { lat: 50.0368, lon: 15.7796 },
-          to: { lat: 50.0783, lon: 15.8067 },
-          mode: "car",
-        },
-      ],
-      days: [
         {
           day: 8,
           date: "2026-08-08",
           weekdayShort: "Sa",
-          title: "Lebkuchenhaus & Aquacentrum",
+          title: "Karlsbader Museum & Hans-Heiling-Felsen",
           description:
-            "Vormittags zum märchenhaften Perníková chaloupka (Lebkuchenhaus) bei Ráby — ein eigenes Königreich mit eigener Währung, Pässen und viel Staunen für Kinder. Nachmittags perfekter Sommerabschluss im Aquacentrum Pardubice mit Rutschen und olympischem Becken.",
+            "Vormittags das Karlsbader Museum — das wichtigste regionalhistorische Museum mit Ausstellungen zu Archäologie, Stadtgeschichte und Kurwesen, direkt hinter dem Stadttheater. Nachmittags Ausflug zu den bizarren Hans-Heiling-Felsen bei Doubí am Ufer der Eger — eine mehrere hundert Meter lange Gruppe von Felsnadeln, die laut Sage eine versteinerte Hochzeitsgesellschaft darstellt. Letzter Abend: Abschlussdinner im Kurviertel.",
           tags: [
-            { text: "Lebkuchenhaus Ráby", variant: "family" },
-            { text: "Aquacentrum Pardubice", variant: "family" },
-            { text: "Wasserrutschen" },
-            { text: "Entspannung" },
+            { text: "Karlsbader Museum", variant: "highlight" },
+            { text: "Hans-Heiling-Felsen", variant: "outdoor" },
+            { text: "Eger-Ufer Spaziergang" },
+            { text: "Abschlussdinner", variant: "family" },
           ],
           links: [
+            { label: "Karlsbader Museum", url: "https://www.kvmuz.cz/de" },
             {
-              label: "Lebkuchenhaus Ráby",
-              url: "https://www.pernikovachaloupka.cz/",
-            },
-            {
-              label: "Aquacentrum Pardubice",
-              url: "https://www.aquacentrum.cz/",
+              label: "Hans-Heiling-Felsen",
+              url: "https://www.karlovyvary.cz/de/hans-heiling-felsen",
             },
           ],
         },
@@ -580,42 +454,22 @@ export const trip = {
           day: 9,
           date: "2026-08-09",
           weekdayShort: "So",
-          title: "Schloss Pardubice & Altstadt",
+          title: "Letzter Morgen & Heimfahrt",
           description:
-            "Vormittags das Renaissanceschloss erkunden — interaktive Kinderausstellung, Aussichtsturm und Pfauen im Park. Nachmittags Bummel durch die hübsche Pardubitzer Altstadt mit ihren bunten Renaissancehäusern am Marktplatz. Hinweis: Das Schlossmuseum ist montags geschlossen — heute ist Sonntag, also kein Problem.",
+            "Letztes Frühstück im Hotel Bristol Palace. Noch einmal letzter Kolonnadenspaziergang und Heilwassertrinken — dann Souvenirs: Karlsbader Oblaten und natürlich eine Flasche Becherovka einpacken! Gegen 11 Uhr Check-out, Heimfahrt nach Löbau. Ca. 1,5 Std. Fahrt — pünktlich zum Mittagessen zuhause.",
           tags: [
-            { text: "Schloss Pardubice", variant: "highlight" },
-            { text: "Kinderausstellung", variant: "family" },
-            { text: "Aussichtsturm" },
-            { text: "Altstadt-Bummel" },
+            { text: "Letzter Kolonnadengang" },
+            { text: "Oblaten & Becherovka als Souvenir", variant: "family" },
+            { text: "~1,5 Std. nach Löbau" },
           ],
           links: [
             {
-              label: "Schloss Pardubice",
-              url: "https://www.zamek-pardubice.cz/de",
+              label: "Karlsbader Oblaten",
+              url: "https://www.karlovyvary.cz/de/karlsbader-oblaten",
             },
             {
-              label: "Touristinfo Pardubitz",
-              url: "https://www.visitpardubice.cz/de/",
-            },
-          ],
-        },
-        {
-          day: 10,
-          date: "2026-08-10",
-          weekdayShort: "Mo",
-          title: "Heimreise nach Löbau",
-          description:
-            "Frühzeitig aufbrechen für die ca. 2,5-stündige Fahrt zurück nach Löbau, mit einem Stopp bei McDonald's in Liberec auf halber Strecke. Vielleicht vorher noch ein kurzer Bummel in der Pardubitzer Altstadt für ein letztes tschechisches Frühstück — die Innenstadt ist charmant und fußläufig.",
-          tags: [
-            { text: "Altstadtspaziergang" },
-            { text: "~2 Std. 35 Min. Fahrt nach Löbau" },
-            { text: "Stopp: McDonald's Liberec" },
-          ],
-          links: [
-            {
-              label: "Route Pardubitz → Löbau",
-              url: "https://www.google.com/maps/dir/?api=1&origin=50.0325298,15.780842&destination=51.0962292,14.6701781&waypoints=50.7422137,15.0521328&travelmode=driving",
+              label: "Route Karlsbad → Löbau",
+              url: "https://www.google.com/maps/dir/?api=1&origin=50.2268,12.8712&destination=51.0962292,14.6701781&travelmode=driving",
             },
           ],
         },

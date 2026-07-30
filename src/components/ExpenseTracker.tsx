@@ -37,7 +37,7 @@ const CATEGORY_ICON: Record<Category, LucideIcon> = {
   Sonstiges: CircleDollarSign,
 };
 
-const STORAGE_KEY = "travel-assistant-expenses-v1";
+const STORAGE_KEY = "travel-assistant-expenses-karlsbad-2026";
 
 const currency = new Intl.NumberFormat("de-DE", {
   style: "currency",

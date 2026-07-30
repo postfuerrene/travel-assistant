@@ -18,12 +18,19 @@ export default function CitySection({ city }: { city: City }) {
           />
           Wetter
         </div>
-        <WetterComWidget
-          widgetId={city.weatherWidget.id}
-          location={city.weatherWidget.location}
-          cityLabel={city.name}
-          pageUrl={city.weatherUrl}
-        />
+        {city.weatherWidget ? (
+          <WetterComWidget
+            widgetId={city.weatherWidget.id}
+            location={city.weatherWidget.location}
+            cityLabel={city.name}
+            pageUrl={city.weatherUrl ?? "https://www.wetter.com/"}
+          />
+        ) : (
+          <div className="shadow-float-sm max-w-[300px] rounded-2xl bg-white/85 p-4 text-sm text-ink-soft backdrop-blur-sm">
+            Wetter-Widget folgt, sobald der wetter.com-Link für {city.name} da
+            ist.
+          </div>
+        )}
       </div>
       <CityMapClient city={city} />
       {city.days.map((day) => (

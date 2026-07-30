@@ -1,9 +1,9 @@
-import { BedDouble, Bus, Utensils, Wallet, Ticket } from "lucide-react";
+import { BedDouble, Fuel, Utensils, Wallet, Ticket } from "lucide-react";
 import { trip } from "@/data/trip";
 import type { BudgetCard } from "@/data/trip";
 import ExpenseTracker from "./ExpenseTracker";
 
-const CARD_ICON = [BedDouble, Utensils, Ticket, Bus];
+const CARD_ICON = [BedDouble, Utensils, Ticket, Fuel];
 
 const ACCENT: Record<BudgetCard["accent"], string> = {
   rust: "bg-orange/10 text-orange-deep",

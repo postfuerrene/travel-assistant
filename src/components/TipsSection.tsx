@@ -1,7 +1,14 @@
-import { Bus, Euro, Info, Landmark, Sun, Ticket } from "lucide-react";
+import {
+  Coffee,
+  Euro,
+  Landmark,
+  Mountain,
+  ParkingCircle,
+  Thermometer,
+} from "lucide-react";
 import { trip } from "@/data/trip";
 
-const TIP_ICONS = [Euro, Ticket, Bus, Info, Landmark, Sun];
+const TIP_ICONS = [Coffee, Euro, Landmark, Mountain, ParkingCircle, Thermometer];
 
 export default function TipsSection() {
   return (

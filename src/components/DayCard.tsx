@@ -5,6 +5,7 @@ function tagClass(variant?: DayTag["variant"]) {
   const base = "rounded-full px-2.5 py-1 text-xs font-medium";
   if (variant === "highlight") return `${base} bg-green text-navy`;
   if (variant === "family") return `${base} bg-orange text-navy`;
+  if (variant === "outdoor") return `${base} bg-green-deep text-white`;
   return `${base} bg-cream text-ink-soft`;
 }
 
