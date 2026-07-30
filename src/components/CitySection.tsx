@@ -1,6 +1,7 @@
 import { CloudSun } from "lucide-react";
 import CityHeader from "./CityHeader";
 import CityMapClient from "./CityMapClient";
+import PhotoGallery from "./PhotoGallery";
 import WetterComWidget from "./WetterComWidget";
 import DayCard from "./DayCard";
 import type { City } from "@/data/trip";
@@ -9,6 +10,7 @@ export default function CitySection({ city }: { city: City }) {
   return (
     <section id={city.id} className="mt-10 scroll-mt-24 animate-fade-up">
       <CityHeader city={city} />
+      {city.photos && <PhotoGallery photos={city.photos} />}
       <div className="mb-5">
         <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold text-ink-soft uppercase">
           <CloudSun

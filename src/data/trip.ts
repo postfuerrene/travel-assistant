@@ -46,6 +46,7 @@ export type City = {
   };
   driveFrom: { time: string; from: string; mapsUrl?: string };
   coord: Coord; // city center, used for weather
+  photos?: { src: string; alt: string; caption: string }[];
   weatherUrl?: string;
   weatherWidget?: { id: string; location: string };
   pins: MapPin[];
@@ -181,6 +182,18 @@ export const trip = {
           "https://www.google.com/maps/dir/?api=1&origin=51.0918244,14.6767628&destination=50.2268,12.8712&waypoints=50.7701589,14.2054928|50.3865878,13.1761715&travelmode=driving",
       },
       coord: { lat: 50.2272, lon: 12.871 },
+      photos: [
+        {
+          src: "/images/karlsbad/kolonnade-herbst.jpg",
+          alt: "Die filigrane weiße Marktkolonnade in Karlsbad im Herbstlaub",
+          caption: "Marktkolonnade",
+        },
+        {
+          src: "/images/karlsbad/marktplatz-turm.jpg",
+          alt: "Marktplatz mit Pestsäule und dem Schlossturm über Karlsbad",
+          caption: "Marktplatz & Schlossturm",
+        },
+      ],
       weatherUrl: "https://www.wetter.com/tschechien/karlsbad/CZ0KA0002.html",
       weatherWidget: {
         id: "wcom-b53b4c3e5c76fab70f56f56659b98660",
